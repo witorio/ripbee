@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
+import DarkModeToggle from '@/Components/DarkModeToggle.vue';
 
 defineProps<{
     canLogin?: boolean;
@@ -66,6 +67,10 @@ function handleImageError() {
                             >
                                 Register
                             </Link>
+
+                            <!-- Dark Mode Toggle -->
+                            <DarkModeToggle class="ms-3" />
+
                         </template>
                     </nav>
                 </header>

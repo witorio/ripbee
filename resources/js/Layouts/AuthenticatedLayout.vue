@@ -37,8 +37,6 @@ const showingNavigationDropdown = ref(false);
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
-                            <!-- Dark Mode Toggle -->
-                            <DarkModeToggle class="ms-3" />
 
                             <!-- Settings Dropdown -->
                             <div class="ms-3 relative">
@@ -75,6 +73,9 @@ const showingNavigationDropdown = ref(false);
                                     </template>
                                 </Dropdown>
                             </div>
+
+                            <!-- Dark Mode Toggle -->
+                            <DarkModeToggle class="ms-3" />
                         </div>
 
                         <!-- Hamburger -->
