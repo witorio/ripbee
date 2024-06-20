@@ -40,9 +40,10 @@ const form = useForm({
                     class="mt-1 block w-full"
                     v-model="form.username"
                     required
-                    autofocus
                     autocomplete="username"
                     readonly
+                    @focus="$event.target.blur()"
+                    @mousedown.prevent
                 />
 
                 <InputError class="mt-2" :message="form.errors.username" />
@@ -73,7 +74,6 @@ const form = useForm({
                     class="mt-1 block w-full"
                     v-model="form.last_name"
                     required
-                    autofocus
                     autocomplete="last_name"
                 />
 
@@ -91,6 +91,8 @@ const form = useForm({
                     required
                     autocomplete="email"
                     readonly
+                    @focus="$event.target.blur()"
+                    @mousedown.prevent
                 />
 
                 <InputError class="mt-2" :message="form.errors.email" />
