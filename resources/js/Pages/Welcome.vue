@@ -52,6 +52,7 @@ function handleImageError() {
                         >
                             Wallet
                         </Link>
+                        
 
                         <template v-else>
                             <Link
@@ -69,10 +70,10 @@ function handleImageError() {
                                 Register
                             </Link>
 
-                            <!-- Dark Mode Toggle -->
-                            <DarkModeToggle class="ms-3" />
-
+                            
                         </template>
+                        <!-- Dark Mode Toggle -->
+                        <DarkModeToggle class="ms-3" />
                     </nav>
                 </header>
 
