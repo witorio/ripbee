@@ -7,13 +7,14 @@ import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
 import DarkModeToggle from '@/Components/DarkModeToggle.vue';
+import Footer from '@/Components/Footer.vue';
 
 const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
     <div>
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div class="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900">
             <nav class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -152,6 +153,8 @@ const showingNavigationDropdown = ref(false);
             <main>
                 <slot />
             </main>
+            <Footer>
+            </Footer>
         </div>
     </div>
 </template>
