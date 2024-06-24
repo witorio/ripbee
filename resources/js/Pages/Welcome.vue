@@ -24,7 +24,7 @@ function handleImageError() {
         <img
             id="background"
             class="absolute -left-20 top-0 max-w-[877px]"
-            src="https://laravel.com/assets/img/welcome/background.svg"
+            src="images/background.svg"
         />
         <div
             class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FEC008] selection:text-white"
@@ -33,7 +33,7 @@ function handleImageError() {
                 <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
                     <div class="flex lg:justify-center lg:col-start-2">
                         <svg
-                            class="h-12 w-auto text-white lg:h-16 lg:text-[#FEC008]"
+                            class="h-12 w-auto text-[white] lg:h-16 lg:text-[#FEC008]"
                             viewBox="0 0 62 65"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
