@@ -32,8 +32,8 @@ function handleImageError() {
         >
             <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
                 <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
-                    <div class="flex lg:justify-center lg:col-start-2 dark">
-                        <ApplicationLogo class="w-20 h-20"/>
+                    <div class="flex lg:justify-center lg:col-start-2">
+                        <ApplicationLogo/>
                     </div>
                     <nav v-if="canLogin" class="-mx-3 flex flex-1 justify-end">
                         <Link
@@ -326,9 +326,7 @@ function handleImageError() {
                         </div>
                     </div>
                 </main>
-
-                <Footer>
-                </Footer>
+                <Footer/>
             </div>
         </div>
     </div>
