@@ -52,6 +52,22 @@ services:
                 - '${DB_USERNAME}'
             retries: 3
             timeout: 5s
+    adminer:
+        image: adminer:latest
+        ports:
+            - 8001:80
+        environment:
+            MEMORY: "256M" # memory_limit
+            UPLOAD: "2048M" # upload_max_filesize, post_max_size
+            ADMINER_HOST: "${DB_HOST}"
+            ADMINER_USER: "${DB_USERNAME}"
+            ADMINER_PASSWORD: "${DB_PASSWORD}"
+            ADMINER_DATABASE: "${DB_DATABASE}"
+        build:
+            context: ./.docker/adminer
+            dockerfile: Dockerfile
+        networks:
+            - sail
     redis:
         image: 'redis:alpine'
         ports:
