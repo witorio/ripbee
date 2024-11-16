@@ -79,6 +79,9 @@ cp .env.example .env
 ```
 sail up -d
 ```
+```
+sailup (on wiktormac alias)
+```
 
 ## Update php dependencies with php build-in container
 ```
