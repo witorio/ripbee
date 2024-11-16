@@ -53,7 +53,6 @@ services:
             retries: 3
             timeout: 5s
     adminer:
-        image: adminer:latest
         ports:
             - 8001:80
         environment:
@@ -68,7 +67,6 @@ services:
             dockerfile: Dockerfile
         networks:
             - sail
-
     redis:
         image: 'redis:alpine'
         ports:
