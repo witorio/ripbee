@@ -55,7 +55,7 @@ services:
     adminer:
         image: adminer:latest
         ports:
-            - 8001:80
+            - '${FORWARD_ADMINER_PORT:-8080}:8080'
         environment:
             MEMORY: "256M" # memory_limit
             UPLOAD: "2048M" # upload_max_filesize, post_max_size
@@ -63,9 +63,6 @@ services:
             ADMINER_USER: "${DB_USERNAME}"
             ADMINER_PASSWORD: "${DB_PASSWORD}"
             ADMINER_DATABASE: "${DB_DATABASE}"
-        build:
-            context: ./.docker/adminer
-            dockerfile: Dockerfile
         networks:
             - sail
     redis:
