@@ -37,6 +37,15 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('wallet')" :active="route().current('wallet')">
                                     Wallet
                                 </NavLink>
+                                <NavLink :href="route('buy')" :active="route().current('buy')">
+                                    Buy
+                                </NavLink>
+                                <NavLink :href="route('sell')" :active="route().current('sell')">
+                                    Sell
+                                </NavLink>
+                                <NavLink :href="route('deposit')" :active="route().current('deposit')">
+                                    Deposit
+                                </NavLink>
                             </div>
                         </div>
 

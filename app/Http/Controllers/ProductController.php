@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function buy()
     {
         $products = Product::all();
-        return Inertia::render('Products/Index', [
+        return Inertia::render('Buy/Buy', [
             'products' => $products,
         ]);
     }

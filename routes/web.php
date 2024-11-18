@@ -16,7 +16,7 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/wallet', function () {
-    return Inertia::render('Wallet');
+    return Inertia::render('Wallet/Wallet');
 })->middleware(['auth', 'verified'])->name('wallet');
 
 Route::middleware('auth')->group(function () {
@@ -25,7 +25,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/buy', [ProductController::class, 'buy'])->middleware(['auth', 'verified'])->name('buy');
+Route::get('/sell', [ProductController::class, 'buy'])->middleware(['auth', 'verified'])->name('sell'); //example only, whole endpoints is wrong
+Route::get('/deposit', [ProductController::class, 'buy'])->middleware(['auth', 'verified'])->name('deposit'); //example only, whole endpoints is wrong
 
 
 require __DIR__.'/auth.php';
