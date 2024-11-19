@@ -1,6 +1,6 @@
 <template>
 
-      <svg class="w-20 h-20 fill-black dark:fill-white" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 247 212"
+      <svg class="fill-black dark:fill-white" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 247 212"
             xml:space="preserve">
 
               <path class="fill-black dark:fill-white" d="M138.9,172.4c-2.9,0-5.3-2.4-5.3-5.3c0-2.9,2.4-5.3,5.3-5.3h7.6c2.9,0,5.3,2.4,5.3,5.3
