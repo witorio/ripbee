@@ -25,5 +25,8 @@ export default {
             strategy: 'class', // only generate classes
         }),
     ],
-    darkMode: 'class',
+    daisyui: {
+        themes: ["cupcake", "night"], // Enable the "cupcake" and "dark" themes
+    },
+    darkMode: ['selector', '[data-theme="night"]'],
 };

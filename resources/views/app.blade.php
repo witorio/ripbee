@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="cupcake">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +14,10 @@
         @routes
         @vite(['resources/js/app.ts', "resources/js/Pages/{$page['component']}.vue"])
         @inertiaHead
+        <script>
+            const theme = localStorage.getItem('theme') || 'cupcake';
+            document.documentElement.setAttribute('data-theme', theme);
+        </script>
     </head>
     <body class="font-sans antialiased">
         @inertia
