@@ -180,7 +180,7 @@ const submit = () => {
             </div>
             <p class="mt-4 text-center text-sm text-base-content/80 md:mt-6">
                 Haven't an account
-                <a class="text-primary hover:underline" href="./auth-register.html">Create One</a>
+                <Link :href="route('register')" class="text-primary hover:underline">Register</Link>
             </p>
         </div>
     </GuestLayout>

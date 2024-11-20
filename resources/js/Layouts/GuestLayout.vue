@@ -3,6 +3,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import { Link } from '@inertiajs/vue3';
 import Footer from '@/Components/Footer.vue';
 import { Icon } from '@iconify/vue';
+import DarkModeToggle from '@/Components/DarkModeToggle.vue';
 
 const createPasswordField = (component) => {
     const input = component.querySelector("[data-slot=input]")
@@ -62,16 +63,15 @@ document.addEventListener("DOMContentLoaded", function () {
                                     class="mask mask-squircle size-11 bg-base-content/10 p-0.5"
                                     src="assets/images/landing/testimonial-pouya-avatar.png" />
                                 <div class="mt-2 flex items-center justify-center gap-0.5">
-                                    <Icon icon="lucide:star" height="12" inline
-                                        class="text-orange-400 "/>
+                                    <Icon icon="lucide:star" height="12" inline class="text-orange-400 " />
 
-                                    <Icon icon="lucide:star" height="12" class="text-orange-400"/>
+                                    <Icon icon="lucide:star" height="12" class="text-orange-400" />
 
-                                    <Icon icon="lucide:star" height="12" class="text-orange-400"/>
+                                    <Icon icon="lucide:star" height="12" class="text-orange-400" />
 
-                                    <Icon icon="lucide:star" height="12" class="text-orange-400"/>
+                                    <Icon icon="lucide:star" height="12" class="text-orange-400" />
 
-                                    <Icon icon="lucide:star" height="12" class="text-orange-400"/>
+                                    <Icon icon="lucide:star" height="12" class="text-orange-400" />
                                 </div>
                                 <p class="mt-2 text-sm font-medium">Pouya Saadeghi</p>
                                 <p class="text-xs text-base-content/70">Creator of daisyUI</p>
@@ -91,10 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <!--  Start: Logo -->
 
                         <div class="inline">
-                            <img alt="logo-dark" loading="lazy" width="86" height="24" class="hidden dark:inline"
-                                src="assets/images/logo/logo-dark.svg" />
-                            <img alt="logo-light" loading="lazy" width="86" height="24" class="inline dark:hidden"
-                                src="assets/images/logo/logo-light.svg" />
+                            <ApplicationLogo height="80" />
                         </div>
 
                         <!--  End: Logo -->
@@ -103,14 +100,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         <button aria-label="Theme toggle" data-action="theme-toggle"
                             class="btn btn-circle btn-ghost border border-base-content/10 text-base-content/70 hover:bg-base-content/10">
-                            <Icon icon="lucide:sun" height="20" class="hidden dark:inline"/>
-
-                            <Icon icon="lucide:moon" height="20" class="inline dark:hidden"/>
+                            <DarkModeToggle />
                         </button>
 
                         <!--  End: Theme Toggle -->
                     </div>
-                        <slot />
+                    <slot />
                 </div>
             </div>
         </div>
