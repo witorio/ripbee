@@ -39,6 +39,11 @@ const showingNavigationDropdown = ref(false);
                                     <Icon icon="lucide:wallet" height="18" />
                                     Wallet
                                 </NavLink>
+                            </li>
+
+                            <!-- Start: Transactions -->
+                            <li class="menu-title font-semibold">Transactions</li>
+                            <li class="mb-0.5">
                                 <NavLink :href="route('buy')" :active="route().current('buy')">
                                     <Icon icon="lucide:package-plus" height="18" />
                                     Buy
@@ -52,6 +57,9 @@ const showingNavigationDropdown = ref(false);
                                     Deposit
                                 </NavLink>
                             </li>
+
+                            <!-- End: Transactions -->
+
 
                             <!--  End: Dashboard -->
                             <!--  Start: Apps -->
@@ -652,11 +660,9 @@ const showingNavigationDropdown = ref(false);
                             </div>
                             <div class="navbar-end gap-1.5">
                                 <!--  Start: Theme Toggle -->
-                                <button 
-                                aria-label="Theme toggler" 
-                                class="btn btn-circle btn-ghost btn-sm flex items-center justify-center" 
-                                data-action="theme-toggle"
-                                >
+                                <button aria-label="Theme toggler"
+                                    class="btn btn-circle btn-ghost btn-sm flex items-center justify-center"
+                                    data-action="theme-toggle">
                                     <DarkModeToggle class="h-5 w-5" />
                                 </button>
 
