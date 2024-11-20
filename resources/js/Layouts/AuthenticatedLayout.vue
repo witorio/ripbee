@@ -19,7 +19,7 @@ const showingNavigationDropdown = ref(false);
         <div class="size-full">
             <div class="flex overflow-hidden">
                 <div class="leftmenu-wrapper">
-                    <a class="flex h-16 items-center justify-center" href="./dashboards-ecommerce.html">
+                    <a class="flex h-16 items-center justify-center">
                         <!--  Start: Logo -->
 
                         <div class="inline">
@@ -35,12 +35,22 @@ const showingNavigationDropdown = ref(false);
                             <!--  Start: Dashboard -->
 
                             <li class="mb-0.5">
-                                <a class="hover:bg-base-content/15" href="./dashboards-ecommerce.html">
-                                    <div class="flex items-center gap-2">
-                                        <Icon icon="lucide:airplay" height="18" />
-                                        Dashboard
-                                    </div>
-                                </a>
+                                <NavLink :href="route('wallet')" :active="route().current('wallet')">
+                                    <Icon icon="lucide:airplay" height="18" />
+                                    Wallet
+                                </NavLink>
+                                <NavLink :href="route('buy')" :active="route().current('buy')">
+                                    <Icon icon="lucide:package-plus" height="18" />
+                                    Buy
+                                </NavLink>
+                                <NavLink :href="route('sell')" :active="route().current('sell')">
+                                    <Icon icon="lucide:package-minus" height="18" />
+                                    Sell
+                                </NavLink>
+                                <NavLink :href="route('deposit')" :active="route().current('deposit')">
+                                    <Icon icon="lucide:circle-dollar-sign" height="18" />
+                                    Deposit
+                                </NavLink>
                             </li>
 
                             <!--  End: Dashboard -->
@@ -642,11 +652,12 @@ const showingNavigationDropdown = ref(false);
                             </div>
                             <div class="navbar-end gap-1.5">
                                 <!--  Start: Theme Toggle -->
-
-                                <button aria-label="Theme toggler" class="btn btn-circle btn-ghost btn-sm"
-                                    data-action="theme-toggle">
-                                    <Icon icon="lucide:sun" height="20" class="hidden dark:inline" />
-                                    <Icon icon="lucide:moon" height="20" class="inline dark:hidden" />
+                                <button 
+                                aria-label="Theme toggler" 
+                                class="btn btn-circle btn-ghost btn-sm flex items-center justify-center" 
+                                data-action="theme-toggle"
+                                >
+                                    <DarkModeToggle class="h-5 w-5" />
                                 </button>
 
                                 <!--  End: Theme Toggle -->

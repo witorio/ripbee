@@ -1,3 +1,16 @@
+<script setup>
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import { ref, onMounted } from 'vue'
+import { usePage, Head } from '@inertiajs/vue3';
+
+const products = usePage().props.products // Access props from Inertia.js
+
+onMounted(() => {
+  console.log(`Products loaded`)
+})
+</script>
+
+
 <template>
     <Head title="Buy" />
 
@@ -103,15 +116,3 @@
 
     </AuthenticatedLayout>
 </template>
-
-<script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { ref, onMounted } from 'vue'
-import { usePage, Head } from '@inertiajs/vue3';
-
-const products = usePage().props.products // Access props from Inertia.js
-
-onMounted(() => {
-  console.log(`Products loaded`)
-})
-</script>
