@@ -13,13 +13,8 @@
 
         <!-- Scripts -->
         @routes
-        @vite(['resources/js/app.ts', "resources/js/Pages/{$page['component']}.vue"])
+        @vite(['resources/js/app.ts', 'resources/js/scripts/main.ts', "resources/js/Pages/{$page['component']}.vue"])
         @inertiaHead
-        <script>
-            const theme = localStorage.getItem('theme') || 'dark';
-            document.documentElement.setAttribute('data-theme', theme);
-        </script>
-            
         <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.53.0/apexcharts.min.js"></script>
         <script src="assets/js/pages/dashboards/ecommerce.js"></script>
         <script src="assets/js/components/table.js"></script>
@@ -27,8 +22,10 @@
         <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.7/simplebar.css" />
-        <script src="assets/js/app.js"></script>
-
+        <script>
+            const theme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+        </script>
     </head>
     <body class="font-sans antialiased">
         @inertia
