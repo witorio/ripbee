@@ -9,15 +9,18 @@ const props = defineProps<{
 
 const classes = computed(() =>
     props.active
-        ? 'btn btn-active'
-        : 'btn btn-ghost'
+        ? 'hover:bg-base-content/15 active'
+        : 'hover:bg-base-content/15'
 );
 </script>
 
 <template>
-    <Link :href="href">
-        <li><a :class="classes">
+    <Link :href="href" :class="classes">
+        <div class="flex items-center gap-2">
             <slot />
-        </a></li> 
+        </div>
     </Link>
+
+
+
 </template>

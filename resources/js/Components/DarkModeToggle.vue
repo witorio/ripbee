@@ -10,7 +10,7 @@
   
       <!-- Sun icon -->
       <svg
-        class="swap-off h-6 w-6 fill-current"
+        class="swap-off h-5 w-5 fill-current"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >
@@ -21,7 +21,7 @@
   
       <!-- Moon icon -->
       <svg
-        class="swap-on h-6 w-6 fill-current"
+        class="swap-on h-5 w-5 fill-current"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >
@@ -39,14 +39,14 @@
   
   // Initialize theme
   onMounted(() => {
-    const storedTheme = localStorage.getItem("theme") || "cupcake";
-    isDarkMode.value = storedTheme === "night";
+    const storedTheme = localStorage.getItem("theme") || "light";
+    isDarkMode.value = storedTheme === "dark";
     document.documentElement.setAttribute("data-theme", storedTheme);
   });
   
   // Toggle theme
   const toggleTheme = () => {
-    const theme = isDarkMode.value ? "night" : "cupcake";
+    const theme = isDarkMode.value ? "dark" : "light";
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
   };

@@ -3,6 +3,7 @@ import { Head, Link } from '@inertiajs/vue3';
 import DarkModeToggle from '@/Components/DarkModeToggle.vue';
 import Footer from '@/Components/Footer.vue';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import { Icon } from '@iconify/vue';
 
 defineProps<{
     canLogin?: boolean;
@@ -17,317 +18,1086 @@ function handleImageError() {
     document.getElementById('docs-card-content')?.classList.add('!flex-row');
     document.getElementById('background')?.classList.add('!hidden');
 }
+
+// landing.js
+const initExample = () => {
+  document.getElementById("showcase_i_checkbox").indeterminate = true
+  const ratingExample = document.querySelectorAll('#rating_example input[type="checkbox"]')
+
+  ratingExample.forEach((star, index) => {
+    star.addEventListener("change", () => {
+      ratingExample.forEach((star, i) => {
+        star.checked = false
+      })
+      ratingExample[index].checked = true
+    })
+  })
+}
+
+const initTopBar = () => {
+  const topBar = document.getElementById("landing_top_bar")
+  const onWindowScroll = () => {
+    if (window.scrollY < 30) {
+      topBar.classList.add("z-[60]", "border-transparent")
+      topBar.classList.remove(
+        "z-20",
+        "border-b",
+        "border-base-content/10",
+        "bg-base-100",
+        "lg:bg-opacity-90",
+        "dark:lg:bg-opacity-95"
+      )
+    } else {
+      topBar.classList.remove("z-[60]", "border-transparent")
+      topBar.classList.add(
+        "z-20",
+        "border-b",
+        "border-base-content/10",
+        "bg-base-100",
+        "lg:bg-opacity-90",
+        "dark:lg:bg-opacity-95"
+      )
+    }
+  }
+  window.addEventListener("scroll", onWindowScroll)
+  onWindowScroll()
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  initExample()
+  initTopBar()
+})
+
 </script>
 
 <template>
+
     <Head title="Welcome" />
-    <div class="bg-gray-50 text-black/50 dark:bg-gray-900 dark:text-white/50">
-        <img
-            id="background"
-            class="absolute -left-20 top-0 max-w-[877px]"
-            src="images/background.svg"
-        />
-        <div
-            class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#DBAA28] selection:text-white"
-        >
-            <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
-                <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
-                    <div class="flex lg:justify-center lg:col-start-2">
-                        <ApplicationLogo/>
-                    </div>
-                    <nav v-if="canLogin" class="-mx-3 flex flex-1 justify-end">
-                        <Link
-                            v-if="$page.props.auth.user"
-                            :href="route('wallet')"
-                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#DBAA28] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                        >
-                            Wallet
-                        </Link>
-                        
 
-                        <template v-else>
-                            <Link
-                                :href="route('login')"
-                                class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#DBAA28] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                            >
-                                Log in
-                            </Link>
+    <body>
+        <div class="fixed inset-x-0 top-0 z-[60] border-transparent backdrop-blur-sm transition-all duration-500"
+            id="landing_top_bar">
+            <div class="container">
+                <!--  Start: Top Bar -->
 
-                            <Link
-                                v-if="canRegister"
-                                :href="route('register')"
-                                class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#DBAA28] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                            >
-                                Register
-                            </Link>
+                <div role="navigation" aria-label="Navbar" class="navbar px-0">
+                    <div class="navbar-start gap-2">
+                        <div class="flex-none lg:hidden">
+                            <!--  Start: Side Navbar -->
 
-                            
-                        </template>
-                        <!-- Dark Mode Toggle -->
-                        <DarkModeToggle class="ms-3" />
-                    </nav>
-                </header>
-
-                <main class="mt-6">
-                    <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
-                        <a
-                            href="https://laravel.com/docs"
-                            id="docs-card"
-                            class="flex flex-col items-start gap-6 overflow-hidden rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#DBAA28] md:row-span-3 lg:p-10 lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#DBAA28]"
-                        >
-                            <div id="screenshot-container" class="relative flex w-full flex-1 items-stretch">
-                                <img
-                                    src="https://laravel.com/assets/img/welcome/docs-light.svg"
-                                    alt="Laravel documentation screenshot"
-                                    class="aspect-video h-full w-full flex-1 rounded-[10px] object-top object-cover drop-shadow-[0px_4px_34px_rgba(0,0,0,0.06)] dark:hidden"
-                                    @error="handleImageError"
-                                />
-                                <img
-                                    src="https://laravel.com/assets/img/welcome/docs-dark.svg"
-                                    alt="Laravel documentation screenshot"
-                                    class="hidden aspect-video h-full w-full flex-1 rounded-[10px] object-top object-cover drop-shadow-[0px_4px_34px_rgba(0,0,0,0.25)] dark:block"
-                                />
-                                <div
-                                    class="absolute -bottom-16 -left-16 h-40 w-[calc(100%+8rem)] bg-gradient-to-b from-transparent via-white to-white dark:via-zinc-900 dark:to-zinc-900"
-                                ></div>
-                            </div>
-
-                            <div class="relative flex items-center gap-6 lg:items-end">
-                                <div id="docs-card-content" class="flex items-start gap-6 lg:flex-col">
-                                    <div
-                                        class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#DBAA28]/10 sm:size-16"
-                                    >
-                                        <svg
-                                            class="size-5 sm:size-6"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path
-                                                fill="#DBAA28"
-                                                d="M23 4a1 1 0 0 0-1.447-.894L12.224 7.77a.5.5 0 0 1-.448 0L2.447 3.106A1 1 0 0 0 1 4v13.382a1.99 1.99 0 0 0 1.105 1.79l9.448 4.728c.14.065.293.1.447.1.154-.005.306-.04.447-.105l9.453-4.724a1.99 1.99 0 0 0 1.1-1.789V4ZM3 6.023a.25.25 0 0 1 .362-.223l7.5 3.75a.251.251 0 0 1 .138.223v11.2a.25.25 0 0 1-.362.224l-7.5-3.75a.25.25 0 0 1-.138-.22V6.023Zm18 11.2a.25.25 0 0 1-.138.224l-7.5 3.75a.249.249 0 0 1-.329-.099.249.249 0 0 1-.033-.12V9.772a.251.251 0 0 1 .138-.224l7.5-3.75a.25.25 0 0 1 .362.224v11.2Z"
-                                            />
-                                            <path
-                                                fill="#DBAA28"
-                                                d="m3.55 1.893 8 4.048a1.008 1.008 0 0 0 .9 0l8-4.048a1 1 0 0 0-.9-1.785l-7.322 3.706a.506.506 0 0 1-.452 0L4.454.108a1 1 0 0 0-.9 1.785H3.55Z"
-                                            />
-                                        </svg>
-                                    </div>
-
-                                    <div class="pt-3 sm:pt-5 lg:pt-0">
-                                        <h2 class="text-xl font-semibold text-black dark:text-white">Documentation</h2>
-
-                                        <p class="mt-4 text-sm/relaxed">
-                                            Laravel has wonderful documentation covering every aspect of the framework.
-                                            Whether you are a newcomer or have prior experience with Laravel, we
-                                            recommend reading our documentation from beginning to end.
-                                        </p>
-                                    </div>
+                            <div class="drawer">
+                                <input id="side_drawer_toggle" aria-label="Drawer handler" class="drawer-toggle"
+                                    readonly="" type="checkbox" />
+                                <div class="drawer-content">
+                                    <button class="btn btn-square btn-ghost" onclick="side_drawer_toggle.click()">
+                                        <Icon icon="lucide:menu" height="20"
+                                            class="inline-block text-xl"/>
+                                    </button>
                                 </div>
+                                <div class="drawer-side">
+                                    <label class="drawer-overlay" onclick="side_drawer_toggle.click()"></label>
+                                    <ul class="menu min-h-full w-80 gap-2 bg-base-100 p-4 text-base-content">
+                                        <li class="font-medium">
+                                            <div class="inline">
+                                                <ApplicationLogo  alt="logo-dark" loading="lazy" height="40"/>
+                                            </div>
+                                        </li>
+                                        <li class="font-medium">
+                                            <p>Home</p>
+                                        </li>
+                                        <li class="font-medium"><a href="./dashboards-ecommerce.html">Dashboard</a></li>
+                                        <li class="font-medium">
+                                            <a href="./ui-components-accordion.html">Components</a>
+                                        </li>
 
-                                <svg
-                                    class="size-6 shrink-0 stroke-[#DBAA28]"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="1.5"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                                    />
-                                </svg>
+                                    </ul>
+                                </div>
                             </div>
+
+                            <!--  End: Navbar Menu Item -->
+                        </div>
+                        <!--  Start: Logo -->
+
+                        <div class="inline">
+                            <ApplicationLogo  alt="logo-dark" loading="lazy" height="80"/>
+                        </div>
+
+                        <!--  End: Logo -->
+                    </div>
+                    <div class="navbar-end gap-3">
+                        <!--  Start: Navbar Menu Item -->
+
+                        <nav v-if="canLogin" class="-mx-3 flex flex-1 justify-end">
+                            <Link v-if="$page.props.auth.user" :href="route('wallet')"
+                                class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#DBAA28] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                                <button class="btn btn-primary btn-sm">Wallet</button>
+                            </Link>
+
+
+                            <template v-else>
+                                <Link :href="route('login')"
+                                    class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#DBAA28] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                                    <button class="btn btn-ghost btn-sm">Login</button>
+                                </Link>
+
+                                <Link v-if="canRegister" :href="route('register')"
+                                    class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#DBAA28] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                                <button class="btn btn-primary btn-sm">Register</button>
+                                </Link>
+
+
+                            </template>
+                            <!-- Dark Mode Toggle -->
+                            <DarkModeToggle class="ms-3" />
+                        </nav>
+
+
+                        <!--  End: Navbar Menu Item -->
+                        <!-- <a target="_blank" href="https://daisyui.com/store/">
+                            <button class="btn btn-primary btn-sm">Purchase Now</button>
+                        </a> -->
+                    </div>
+                </div>
+
+                <!--  End: Top Bar -->
+            </div>
+        </div>
+
+        <!--  Start: Hero -->
+
+        <div>
+            <div class="absolute inset-0 rotate-180 bg-cover bg-center bg-no-repeat opacity-20 dark:hidden" style="
+          background-image: url(assets/images/landing/hero-gradient.png);
+          filter: blur(4px);
+        "></div>
+            <div class="container relative z-10 py-20 xl:py-48">
+                <div class="grid items-center gap-8 xl:grid-cols-7 xl:gap-20">
+                    <div class="order-2 xl:order-1 xl:col-span-3">
+                        <a class="inline rounded-full bg-primary/20 px-2.5 py-0.5 text-sm font-medium text-primary"
+                            target="_blank" href="https://nexus.daisyui.com/docs/support/changelog">
+                            What's New in 1.1
                         </a>
+                        <p class="mt-3 text-3xl font-semibold leading-normal">
+                            Nexus - The Ultimate
+                            <br />
+                            Admin &amp; Client Dashboard
+                        </p>
+                        <p class="mt-8 max-w-[500px]">
+                            Begin your next project with a foundation built on daisyUI, with effortless
+                            customization to accelerate development process
+                        </p>
+                        <div class="mt-8 inline-flex items-center gap-3">
+                            <a href="./dashboards-ecommerce.html">
+                                <button class="btn btn-primary gap-2">
+                                    <Icon icon="lucide:airplay" height="18"/>
 
-                        <a
-                            href="https://laracasts.com"
-                            class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#DBAA28] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#DBAA28]"
-                        >
-                            <div
-                                class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#DBAA28]/10 sm:size-16"
-                            >
-                                <svg
-                                    class="size-5 sm:size-6"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <g fill="#DBAA28">
-                                        <path
-                                            d="M24 8.25a.5.5 0 0 0-.5-.5H.5a.5.5 0 0 0-.5.5v12a2.5 2.5 0 0 0 2.5 2.5h19a2.5 2.5 0 0 0 2.5-2.5v-12Zm-7.765 5.868a1.221 1.221 0 0 1 0 2.264l-6.626 2.776A1.153 1.153 0 0 1 8 18.123v-5.746a1.151 1.151 0 0 1 1.609-1.035l6.626 2.776ZM19.564 1.677a.25.25 0 0 0-.177-.427H15.6a.106.106 0 0 0-.072.03l-4.54 4.543a.25.25 0 0 0 .177.427h3.783c.027 0 .054-.01.073-.03l4.543-4.543ZM22.071 1.318a.047.047 0 0 0-.045.013l-4.492 4.492a.249.249 0 0 0 .038.385.25.25 0 0 0 .14.042h5.784a.5.5 0 0 0 .5-.5v-2a2.5 2.5 0 0 0-1.925-2.432ZM13.014 1.677a.25.25 0 0 0-.178-.427H9.101a.106.106 0 0 0-.073.03l-4.54 4.543a.25.25 0 0 0 .177.427H8.4a.106.106 0 0 0 .073-.03l4.54-4.543ZM6.513 1.677a.25.25 0 0 0-.177-.427H2.5A2.5 2.5 0 0 0 0 3.75v2a.5.5 0 0 0 .5.5h1.4a.106.106 0 0 0 .073-.03l4.54-4.543Z"
-                                        />
-                                    </g>
-                                </svg>
-                            </div>
+                                    Dashboard
+                                </button>
+                            </a>
+                            <a href="./ui-components-accordion.html">
+                                <button class="btn btn-ghost gap-2">
+                                    <Icon icon="lucide:box" height="18"/>
 
-                            <div class="pt-3 sm:pt-5">
-                                <h2 class="text-xl font-semibold text-black dark:text-white">Laracasts</h2>
-
-                                <p class="mt-4 text-sm/relaxed">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript
-                                    development. Check them out, see for yourself, and massively level up your
-                                    development skills in the process.
-                                </p>
-                            </div>
-
-                            <svg
-                                class="size-6 shrink-0 self-center stroke-[#DBAA28]"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                                />
-                            </svg>
-                        </a>
-
-                        <a
-                            href="https://laravel-news.com"
-                            class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#DBAA28] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#DBAA28]"
-                        >
-                            <div
-                                class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#DBAA28]/10 sm:size-16"
-                            >
-                                <svg
-                                    class="size-5 sm:size-6"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <g fill="#DBAA28">
-                                        <path
-                                            d="M8.75 4.5H5.5c-.69 0-1.25.56-1.25 1.25v4.75c0 .69.56 1.25 1.25 1.25h3.25c.69 0 1.25-.56 1.25-1.25V5.75c0-.69-.56-1.25-1.25-1.25Z"
-                                        />
-                                        <path
-                                            d="M24 10a3 3 0 0 0-3-3h-2V2.5a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2V20a3.5 3.5 0 0 0 3.5 3.5h17A3.5 3.5 0 0 0 24 20V10ZM3.5 21.5A1.5 1.5 0 0 1 2 20V3a.5.5 0 0 1 .5-.5h14a.5.5 0 0 1 .5.5v17c0 .295.037.588.11.874a.5.5 0 0 1-.484.625L3.5 21.5ZM22 20a1.5 1.5 0 1 1-3 0V9.5a.5.5 0 0 1 .5-.5H21a1 1 0 0 1 1 1v10Z"
-                                        />
-                                        <path
-                                            d="M12.751 6.047h2a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-.75.75h-2A.75.75 0 0 1 12 7.3v-.5a.75.75 0 0 1 .751-.753ZM12.751 10.047h2a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-.75.75h-2A.75.75 0 0 1 12 11.3v-.5a.75.75 0 0 1 .751-.753ZM4.751 14.047h10a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-.75.75h-10A.75.75 0 0 1 4 15.3v-.5a.75.75 0 0 1 .751-.753ZM4.75 18.047h7.5a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-.75.75h-7.5A.75.75 0 0 1 4 19.3v-.5a.75.75 0 0 1 .75-.753Z"
-                                        />
-                                    </g>
-                                </svg>
-                            </div>
-
-                            <div class="pt-3 sm:pt-5">
-                                <h2 class="text-xl font-semibold text-black dark:text-white">Laravel News</h2>
-
-                                <p class="mt-4 text-sm/relaxed">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the
-                                    latest and most important news in the Laravel ecosystem, including new package
-                                    releases and tutorials.
-                                </p>
-                            </div>
-
-                            <svg
-                                class="size-6 shrink-0 self-center stroke-[#DBAA28]"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                                />
-                            </svg>
-                        </a>
-
-                        <div
-                            class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800"
-                        >
-                            <div
-                                class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#DBAA28]/10 sm:size-16"
-                            >
-                                <svg
-                                    class="size-5 sm:size-6"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <g fill="#DBAA28">
-                                        <path
-                                            d="M16.597 12.635a.247.247 0 0 0-.08-.237 2.234 2.234 0 0 1-.769-1.68c.001-.195.03-.39.084-.578a.25.25 0 0 0-.09-.267 8.8 8.8 0 0 0-4.826-1.66.25.25 0 0 0-.268.181 2.5 2.5 0 0 1-2.4 1.824.045.045 0 0 0-.045.037 12.255 12.255 0 0 0-.093 3.86.251.251 0 0 0 .208.214c2.22.366 4.367 1.08 6.362 2.118a.252.252 0 0 0 .32-.079 10.09 10.09 0 0 0 1.597-3.733ZM13.616 17.968a.25.25 0 0 0-.063-.407A19.697 19.697 0 0 0 8.91 15.98a.25.25 0 0 0-.287.325c.151.455.334.898.548 1.328.437.827.981 1.594 1.619 2.28a.249.249 0 0 0 .32.044 29.13 29.13 0 0 0 2.506-1.99ZM6.303 14.105a.25.25 0 0 0 .265-.274 13.048 13.048 0 0 1 .205-4.045.062.062 0 0 0-.022-.07 2.5 2.5 0 0 1-.777-.982.25.25 0 0 0-.271-.149 11 11 0 0 0-5.6 2.815.255.255 0 0 0-.075.163c-.008.135-.02.27-.02.406.002.8.084 1.598.246 2.381a.25.25 0 0 0 .303.193 19.924 19.924 0 0 1 5.746-.438ZM9.228 20.914a.25.25 0 0 0 .1-.393 11.53 11.53 0 0 1-1.5-2.22 12.238 12.238 0 0 1-.91-2.465.248.248 0 0 0-.22-.187 18.876 18.876 0 0 0-5.69.33.249.249 0 0 0-.179.336c.838 2.142 2.272 4 4.132 5.353a.254.254 0 0 0 .15.048c1.41-.01 2.807-.282 4.117-.802ZM18.93 12.957l-.005-.008a.25.25 0 0 0-.268-.082 2.21 2.21 0 0 1-.41.081.25.25 0 0 0-.217.2c-.582 2.66-2.127 5.35-5.75 7.843a.248.248 0 0 0-.09.299.25.25 0 0 0 .065.091 28.703 28.703 0 0 0 2.662 2.12.246.246 0 0 0 .209.037c2.579-.701 4.85-2.242 6.456-4.378a.25.25 0 0 0 .048-.189 13.51 13.51 0 0 0-2.7-6.014ZM5.702 7.058a.254.254 0 0 0 .2-.165A2.488 2.488 0 0 1 7.98 5.245a.093.093 0 0 0 .078-.062 19.734 19.734 0 0 1 3.055-4.74.25.25 0 0 0-.21-.41 12.009 12.009 0 0 0-10.4 8.558.25.25 0 0 0 .373.281 12.912 12.912 0 0 1 4.826-1.814ZM10.773 22.052a.25.25 0 0 0-.28-.046c-.758.356-1.55.635-2.365.833a.25.25 0 0 0-.022.48c1.252.43 2.568.65 3.893.65.1 0 .2 0 .3-.008a.25.25 0 0 0 .147-.444c-.526-.424-1.1-.917-1.673-1.465ZM18.744 8.436a.249.249 0 0 0 .15.228 2.246 2.246 0 0 1 1.352 2.054c0 .337-.08.67-.23.972a.25.25 0 0 0 .042.28l.007.009a15.016 15.016 0 0 1 2.52 4.6.25.25 0 0 0 .37.132.25.25 0 0 0 .096-.114c.623-1.464.944-3.039.945-4.63a12.005 12.005 0 0 0-5.78-10.258.25.25 0 0 0-.373.274c.547 2.109.85 4.274.901 6.453ZM9.61 5.38a.25.25 0 0 0 .08.31c.34.24.616.561.8.935a.25.25 0 0 0 .3.127.631.631 0 0 1 .206-.034c2.054.078 4.036.772 5.69 1.991a.251.251 0 0 0 .267.024c.046-.024.093-.047.141-.067a.25.25 0 0 0 .151-.23A29.98 29.98 0 0 0 15.957.764a.25.25 0 0 0-.16-.164 11.924 11.924 0 0 0-2.21-.518.252.252 0 0 0-.215.076A22.456 22.456 0 0 0 9.61 5.38Z"
-                                        />
-                                    </g>
-                                </svg>
-                            </div>
-
-                            <div class="pt-3 sm:pt-5">
-                                <h2 class="text-xl font-semibold text-black dark:text-white">Vibrant Ecosystem</h2>
-
-                                <p class="mt-4 text-sm/relaxed">
-                                    Laravel's robust library of first-party tools and libraries, such as
-                                    <a
-                                        href="https://forge.laravel.com"
-                                        class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#DBAA28] dark:hover:text-white dark:focus-visible:ring-[#DBAA28]"
-                                        >Forge</a
-                                    >,
-                                    <a
-                                        href="https://vapor.laravel.com"
-                                        class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#DBAA28] dark:hover:text-white"
-                                        >Vapor</a
-                                    >,
-                                    <a
-                                        href="https://nova.laravel.com"
-                                        class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#DBAA28] dark:hover:text-white"
-                                        >Nova</a
-                                    >,
-                                    <a
-                                        href="https://envoyer.io"
-                                        class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#DBAA28] dark:hover:text-white"
-                                        >Envoyer</a
-                                    >, and
-                                    <a
-                                        href="https://herd.laravel.com"
-                                        class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#DBAA28] dark:hover:text-white"
-                                        >Herd</a
-                                    >
-                                    help you take your projects to the next level. Pair them with powerful open source
-                                    libraries like
-                                    <a
-                                        href="https://laravel.com/docs/billing"
-                                        class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#DBAA28] dark:hover:text-white"
-                                        >Cashier</a
-                                    >,
-                                    <a
-                                        href="https://laravel.com/docs/dusk"
-                                        class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#DBAA28] dark:hover:text-white"
-                                        >Dusk</a
-                                    >,
-                                    <a
-                                        href="https://laravel.com/docs/broadcasting"
-                                        class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#DBAA28] dark:hover:text-white"
-                                        >Echo</a
-                                    >,
-                                    <a
-                                        href="https://laravel.com/docs/horizon"
-                                        class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#DBAA28] dark:hover:text-white"
-                                        >Horizon</a
-                                    >,
-                                    <a
-                                        href="https://laravel.com/docs/sanctum"
-                                        class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#DBAA28] dark:hover:text-white"
-                                        >Sanctum</a
-                                    >,
-                                    <a
-                                        href="https://laravel.com/docs/telescope"
-                                        class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#DBAA28] dark:hover:text-white"
-                                        >Telescope</a
-                                    >, and more.
-                                </p>
+                                    Components
+                                </button>
+                            </a>
+                        </div>
+                        <div class="mt-8">
+                            <p class="font-medium text-base-content/70">Development Stack</p>
+                            <div class="mt-3 flex items-center gap-5">
+                                <div role="tooltip" data-tip="HTML" class="tooltip">
+                                    <img alt="HTML" loading="lazy" width="28" height="28" class="size-7"
+                                        src="assets/images/landing/logo-html.svg" />
+                                </div>
+                                <div role="tooltip" data-tip="daisyUI - Component Library" class="tooltip">
+                                    <img alt="Next" loading="lazy" width="28" height="28" class="size-7"
+                                        src="assets/images/landing/logo-daisyui.svg" />
+                                </div>
+                                <div role="tooltip" data-tip="Javascript" class="tooltip">
+                                    <img alt="Javascript" loading="lazy" width="28" height="28" class="size-7"
+                                        src="assets/images/landing/logo-js.svg" />
+                                </div>
+                                <div role="tooltip" data-tip="Typescript" class="tooltip">
+                                    <img alt="Typescript" loading="lazy" width="28" height="28" class="size-7"
+                                        src="assets/images/landing/logo-ts.svg" />
+                                </div>
+                                <div role="tooltip" data-tip="React" class="tooltip">
+                                    <img alt="React" loading="lazy" width="28" height="28" class="size-6"
+                                        src="assets/images/landing/logo-react.svg" />
+                                </div>
+                                <div role="tooltip" data-tip="Next.JS" class="tooltip">
+                                    <img alt="Next" loading="lazy" width="28" height="28" class="size-7 dark:invert"
+                                        src="assets/images/landing/logo-next.svg" />
+                                </div>
+                                <div role="tooltip" data-tip="Vite" class="tooltip">
+                                    <img alt="Vite" loading="lazy" width="28" height="28" class="size-7"
+                                        src="assets/images/landing/logo-vite.svg" />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </main>
-                <Footer/>
+                    <div class="relative order-1 xl:order-2 xl:col-span-4">
+                        <img src="assets/images/landing/dashboard-hero.png"
+                            class="inline rounded-md shadow-xl dark:hidden" alt="hero-landing" />
+                        <img src="assets/images/landing/dashboard-hero-dark.png"
+                            class="hidden rounded-md shadow-xl dark:inline" alt="hero-landing" />
+                        <img src="assets/images/landing/hero-1.jpg"
+                            class="absolute -start-16 top-[65%] hidden rounded-md shadow-xl dark:hidden xl:inline"
+                            alt="hero-landing" />
+                        <img src="assets/images/landing/hero-dark-1.jpg"
+                            class="absolute -start-16 top-[65%] hidden rounded-md shadow-xl dark:xl:inline"
+                            alt="hero-landing" />
+                        <img src="assets/images/landing/hero-2.jpg"
+                            class="animate-bounce-2 absolute -end-32 top-3/4 hidden rounded-md shadow-xl dark:hidden xl:inline"
+                            alt="hero-landing" />
+                        <img src="assets/images/landing/hero-dark-2.jpg"
+                            class="animate-bounce-2 absolute -end-32 top-3/4 hidden rounded-md shadow-xl dark:xl:inline"
+                            alt="hero-landing" />
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+
+        <!--  End: Hero -->
+
+        <!--  Start: Feature -->
+
+        <div class="relative z-10">
+            <div class="container py-12 2xl:py-24">
+                <div class="text-center">
+                    <div class="inline-block rounded border border-indigo-500/5 bg-indigo-500/5 p-2.5">
+                        <Icon icon="lucide:wand" height="20" class="text-indigo-600"/>
+                    </div>
+                    <p class="mt-2 text-3xl font-semibold">Why you choose</p>
+                    <p class="mt-3 inline-block max-w-md text-base-content/80">
+                        Explore our captivating landing page with seamless navigation and engaging visuals for
+                        an immersive experience
+                    </p>
+                </div>
+                <div class="mt-8 grid grid-cols-2 gap-8 lg:grid-cols-4 2xl:mt-24 2xl:gap-16">
+                    <div class="text-center">
+                        <div class="inline-block">
+                            <Icon icon="lucide:hexagon" height="28"/>
+                        </div>
+                        <p class="mt-3 text-lg font-medium">Branding</p>
+                        <p class="mt-1 text-sm text-base-content/80">
+                            Stand out with custom branding that reflects your vision and values
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div class="inline-block">
+                            <Icon icon="lucide:combine" height="28"/>
+                        </div>
+                        <p class="mt-3 text-lg font-medium">Enhanced UX</p>
+                        <p class="mt-1 text-sm text-base-content/80">
+                            We're committed to delivering exceptional user experiences
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div class="inline-block">
+                            <Icon icon="lucide:pencil-ruler" height="28"/>
+                        </div>
+                        <p class="mt-3 text-lg font-medium">Consistent UI</p>
+                        <p class="mt-1 text-sm text-base-content/80">
+                            Designs feature clean lines, modern aesthetics, and thoughtful space use
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div class="inline-block">
+                            <Icon icon="lucide:monitor-smartphone" height="28"/>
+                        </div>
+                        <p class="mt-3 text-lg font-medium">Responsive</p>
+                        <p class="mt-1 text-sm text-base-content/80">
+                            Enjoy a seamless experience on any device
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div class="inline-block">
+                            <Icon icon="lucide:case-sensitive" height="28"/>
+                        </div>
+                        <p class="mt-3 text-lg font-medium">Typography</p>
+                        <p class="mt-1 text-sm text-base-content/80">
+                            Each font mirrors our brand's personality and values, forging a memorable visual
+                            identity
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div class="inline-block">
+                            <Icon icon="lucide:pencil-line" height="28"/>
+                        </div>
+                        <p class="mt-3 text-lg font-medium">Customizable</p>
+                        <p class="mt-1 text-sm text-base-content/80">
+                            With our customization, your imagination sets the only limit
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div class="inline-block">
+                            <Icon icon="lucide:sun-moon" height="28"/>
+                        </div>
+                        <p class="mt-3 text-lg font-medium">Color Presets</p>
+                        <p class="mt-1 text-sm text-base-content/80">
+                            Explore our Color Presets, including Dark Mode, for enhanced visual comfort and
+                            aesthetic choices
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div class="inline-block">
+                            <Icon icon="lucide:code" height="28"/>
+                        </div>
+                        <p class="mt-3 text-lg font-medium">Easy Development</p>
+                        <p class="mt-1 text-sm text-base-content/80">
+                            Easily create your React landing page with our intuitive tools
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--  End: Feature -->
+
+        <!--  Start: Showcase -->
+
+        <div id="features">
+            <div class="container relative py-24">
+                <div class="absolute -start-8 -top-8 size-[350px] bg-cover bg-center bg-no-repeat opacity-20 dark:hidden sm:size-[600px]"
+                    style="background-image: url(assets/images/landing/section-bg-gradient.png)"></div>
+                <div class="relative z-10 grid gap-12 lg:grid-cols-7 lg:gap-24">
+                    <div class="lg:col-span-3">
+                        <div class="inline-block rounded border border-teal-500/5 bg-teal-500/5 p-2.5">
+                            <Icon icon="lucide:box" height="20" class="text-teal-600"/>
+                        </div>
+                        <p class="mt-3 text-3xl font-semibold">Components</p>
+                        <p class="mt-4 text-base-content/70">
+                            Explore our curated collection of popular design elements, including menus, sliders,
+                            buttons, and inputs. Dive in and find everything you need!
+                        </p>
+                        <div class="mt-6">
+                            <a href="./ui-components-accordion.html">
+                                <button class="btn btn-outline btn-sm gap-2">
+                                    View Components
+                                    <Icon icon="lucide:chevron-right" height="18"/>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-4">
+                        <div class="rounded border border-dashed border-base-content/10 p-10 text-center">
+                            <div class="flex flex-wrap justify-center gap-6">
+                                <button class="btn btn-warning btn-sm gap-2">
+                                    <Icon icon="lucide:search" height="16"/>
+                                    Search
+                                </button>
+                                <button class="btn btn-ghost btn-sm gap-2">
+                                    <Icon icon="lucide:upload" height="16"/>
+                                    Upload
+                                </button>
+                                <button aria-label="Buy Now" class="btn btn-circle btn-primary btn-sm gap-2">
+                                    <Icon icon="lucide:shopping-cart" height="16"/>
+                                </button>
+                                <button class="btn btn-success btn-sm">Toast</button>
+                                <div class="dropdown dropdown-bottom">
+                                    <label tabindex="0" class="items-center">
+                                        <button type="button" class="btn btn-sm">
+                                            Dropdown
+                                            <Icon icon="lucide:chevron-down" height="18"/>
+                                        </button>
+                                    </label>
+                                    <ul tabindex="0"
+                                        class="menu dropdown-content w-52 rounded-box bg-base-100 p-2 shadow"
+                                        role="menu">
+                                        <li><a href="#">Item 1</a></li>
+                                        <li><a href="#">Item 2</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-10 flex flex-wrap justify-center gap-6">
+                                <div role="tablist" class="tabs tabs-bordered">
+                                    <input class="tab font-medium" role="tab" aria-label="Tailwind CSS" type="radio"
+                                        name="my_tabs_1" />
+                                    <div class="tab-content"></div>
+                                    <input class="tab font-medium" role="tab" aria-label="daisyUI" type="radio"
+                                        checked="" name="my_tabs_1" />
+                                    <div class="tab-content"></div>
+                                    <input class="tab font-medium" role="tab" aria-label="React" type="radio"
+                                        name="my_tabs_1" />
+                                    <div class="tab-content"></div>
+                                </div>
+                                <span class="loading loading-ring text-primary"></span>
+                                <span class="loading loading-bars text-primary"></span>
+                                <span class="loading loading-infinity text-primary"></span>
+                            </div>
+                            <div class="mt-10 flex flex-wrap items-center justify-center gap-6">
+                                <div aria-label="Avatar photo" class="avatar online">
+                                    <div class="h-10 w-10 rounded-full bg-base-content/10">
+                                        <img src="assets/images/avatars/1.png" alt="Avatar" />
+                                    </div>
+                                </div>
+                                <div aria-label="Group of 4 avatar photos" class="avatar-group -space-x-6">
+                                    <div aria-label="Avatar photo" class="avatar">
+                                        <div class="h-10 w-10 rounded-full bg-base-content/10">
+                                            <img src="assets/images/avatars/1.png" alt="Avatar" />
+                                        </div>
+                                    </div>
+                                    <div aria-label="Avatar photo" class="avatar">
+                                        <div class="h-10 w-10 rounded-full bg-base-content/10">
+                                            <img src="assets/images/avatars/2.png" alt="Avatar" />
+                                        </div>
+                                    </div>
+                                    <div aria-label="Avatar photo" class="avatar">
+                                        <div class="h-10 w-10 rounded-full bg-base-content/10">
+                                            <img src="assets/images/avatars/3.png" alt="Avatar" />
+                                        </div>
+                                    </div>
+                                    <div aria-label="Avatar photo" class="avatar placeholder">
+                                        <div class="bg-neutral-focus h-10 w-10 font-medium text-neutral-content">
+                                            <span>+99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="join">
+                                    <button class="btn join-item btn-sm">1</button>
+                                    <button class="btn join-item btn-active btn-sm">2</button>
+                                    <button class="btn join-item btn-sm">3</button>
+                                    <button class="btn join-item btn-sm">4</button>
+                                </div>
+                                <div role="alert" class="alert alert-info inline-flex w-fit gap-2 px-2 py-1.5">
+                                    <Icon icon="lucide:indo" height="18"/>
+                                    <span>New update available.</span>
+                                </div>
+                            </div>
+                            <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+                                <div class="inline-flex gap-2">
+                                    <input aria-label="showcase radio 1" class="radio" type="radio" checked=""
+                                        name="showcase_radio" />
+                                    <input aria-label="showcase radio 2" class="radio" type="radio"
+                                        name="showcase_radio" />
+                                </div>
+                                <div class="inline-flex items-center gap-2">
+                                    <input id="showcase_toggle" class="toggle toggle-primary toggle-sm ms-2"
+                                        type="checkbox" checked="" />
+                                    <label for="showcase_toggle" class="label">
+                                        <span class="label-text cursor-pointer">Toggle</span>
+                                    </label>
+                                </div>
+                                <div class="inline-flex items-center gap-2">
+                                    <input id="showcase_checkbox" class="checkbox-error checkbox checkbox-sm ms-2"
+                                        type="checkbox" checked="" />
+                                    <label for="showcase_checkbox" class="label">
+                                        <span class="label-text cursor-pointer">Checkbox</span>
+                                    </label>
+                                </div>
+                                <div class="inline-flex items-center gap-2">
+                                    <input id="showcase_i_checkbox" class="checkbox-warning checkbox checkbox-sm ms-2"
+                                        type="checkbox" />
+                                    <label for="showcase_i_checkbox" class="label">
+                                        <span class="label-text cursor-pointer">Checkbox</span>
+                                    </label>
+                                </div>
+                                <div class="inline-flex items-center gap-2">
+                                    <input id="showcase_d_toggle" disabled="" class="checkbox checkbox-sm ms-2"
+                                        type="checkbox" checked="" />
+                                    <label for="showcase_d_toggle" class="label">
+                                        <span class="label-text cursor-pointer">Disabled</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mt-10 grid gap-6 md:grid-cols-2">
+                                <div class="col-span-1">
+                                    <div class="mt-1 flex flex-wrap justify-center gap-6">
+                                        <div aria-label="Rating" class="rating gap-1" id="rating_example">
+                                            <input aria-label="showcase rating 1" class="mask mask-heart bg-red-500"
+                                                type="checkbox" name="rating-3" />
+                                            <input aria-label="showcase rating 2" class="mask mask-heart bg-red-400"
+                                                type="checkbox" name="rating-3" />
+                                            <input aria-label="showcase rating 3" class="mask mask-heart bg-orange-400"
+                                                type="checkbox" name="rating-3" />
+                                            <input aria-label="showcase rating 4" class="mask mask-heart bg-teal-400"
+                                                type="checkbox" checked="" name="rating-3" />
+                                            <input aria-label="showcase rating 5" class="mask mask-heart bg-green-500"
+                                                type="checkbox" name="rating-3" />
+                                        </div>
+                                    </div>
+                                    <div class="form-control mt-4">
+                                        <label class="label">
+                                            <span class="label-text">What is your name?</span>
+                                            <span class="label-text-alt">Mr.</span>
+                                        </label>
+                                        <input placeholder="Type Here" aria-label="Input"
+                                            class="input input-sm input-bordered focus:outline-offset-0" />
+                                        <label class="label">
+                                            <span class="label-text-alt">* Required</span>
+                                            <span class="label-text-alt">0/20</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-control mt-4">
+                                        <textarea placeholder="Bio" aria-label="Bio"
+                                            class="textarea textarea-bordered focus:outline-offset-0"></textarea>
+                                    </div>
+                                    <div class="mt-5">
+                                        <input id="showcase_range" class="range range-primary range-xs" type="range" />
+                                        <label for="showcase_range" class="label">
+                                            <span class="label-text cursor-pointer">Range</span>
+                                        </label>
+                                    </div>
+                                    <div class="mt-2">
+                                        <progress aria-label="showcase progress" max="100" id="showcase_progress"
+                                            class="progress progress-success h-1 w-full"></progress>
+                                        <label class="hidden" for="showcase_progress">Progress</label>
+                                    </div>
+                                </div>
+                                <div class="col-span-1">
+                                    <div aria-label="Card" class="card card-bordered rounded-xl bg-base-100">
+                                        <div class="card-body">
+                                            <div class="card-title">
+                                                <div aria-label="Avatar photo" class="avatar">
+                                                    <div class="h-10 w-10 rounded-full bg-base-content/10">
+                                                        <img src="assets/images/avatars/1.png" alt="Avtar" />
+                                                    </div>
+                                                </div>
+                                                <div class="text-start">
+                                                    <p class="text-base/none">James Ford</p>
+                                                    <p class="mt-1 text-sm/none text-base-content/80">
+                                                        Designer &amp; Developer
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <img alt="card" loading="lazy" width="250" height="142"
+                                                class="mt-1 rounded-xl"
+                                                src="assets/images/landing/component-card-image.png" />
+                                            <p class="text-start text-sm italic">Caption goes here</p>
+                                            <div class="card-actions">
+                                                <button class="btn btn-primary btn-sm">Action</button>
+                                                <button class="btn btn-ghost btn-sm">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--  End: Showcase -->
+
+        <!--  Start: Testimonial -->
+
+        <section id="testimonial" class="container relative py-8 lg:py-24">
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15 dark:opacity-50"
+                style="background-image: url(assets/images/landing/world-map.png)"></div>
+            <div class="relative">
+                <div class="text-center">
+                    <div class="inline-block rounded border border-orange-500/5 bg-orange-500/5 p-2.5">
+                        <Icon icon="lucide:sparkles" height="20" class="text-orange-600"/>
+                    </div>
+                    <h2 class="mt-1 text-3xl font-semibold">What People Say</h2>
+                </div>
+                <div class="mt-16 text-center">
+                    <div class="avatar">
+                        <div class="mask mask-squircle w-16 bg-base-content/10">
+                            <img alt="testimonial" loading="lazy" width="460" height="460"
+                                src="assets/images/landing/testimonial-pouya-avatar.png" />
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center justify-center gap-1">
+                        <Icon icon="lucide:star" height="12" class="text-orange-400"/>
+
+                        <Icon icon="lucide:star" height="12" class="text-orange-400"/>
+
+                        <Icon icon="lucide:star" height="12" class="text-orange-400"/>
+
+                        <Icon icon="lucide:star" height="12" class="text-orange-400"/>
+
+                        <Icon icon="lucide:star" height="12" class="text-orange-400"/>
+                    </div>
+                    <p class="mt-4 inline-block max-w-[600px] text-center">
+                        This is the ultimate admin dashboard for any React project
+                    </p>
+                    <p class="mt-8 text-lg font-medium">Pouya Saadeghi</p>
+                    <p class="text-sm text-base-content/70">Creator of daisyUI</p>
+                </div>
+            </div>
+        </section>
+
+        <!--  End: Testimonial -->
+
+        <div>
+            <!--  Start: Package -->
+
+            <div class="container py-24">
+                <div class="text-center">
+                    <div class="inline-block rounded border border-green-500/5 bg-green-500/5 p-2.5">
+                        <Icon icon="lucide:dollar-sign" height="20" class="text-green-600"/>
+                    </div>
+                    <p class="mt-1 text-3xl font-semibold">Packages</p>
+                    <p class="mt-3 inline-block max-w-sm text-base-content/70">
+                        Discover clear, flexible pricing options to fit any budget, with no hidden fees
+                    </p>
+                </div>
+                <div class="mt-8 grid gap-6 lg:grid-cols-3 xl:gap-12">
+                    <div class="rounded border border-base-content/10 p-6">
+                        <div class="inline rounded bg-primary/5 px-3 py-1 text-sm font-medium text-primary">
+                            Base
+                        </div>
+                        <div class="mt-2 flex items-center justify-between">
+                            <div>
+                                <p class="text-xl font-medium">Starter</p>
+                            </div>
+                            <p class="text-2xl font-semibold">$29</p>
+                        </div>
+                        <div class="mt-3 flex items-center gap-3">
+                            <div role="tooltip" data-tip="Javascript" class="tooltip">
+                                <img alt="Javascript" loading="lazy" width="24" height="24" class="size-5"
+                                    src="assets/images/landing/logo-js.svg" />
+                            </div>
+                            <div role="tooltip" data-tip="Typescript" class="tooltip">
+                                <img alt="Typescript" loading="lazy" width="24" height="24" class="size-5"
+                                    src="assets/images/landing/logo-ts.svg" />
+                            </div>
+                            <div role="tooltip" data-tip="React" class="tooltip">
+                                <img alt="React" loading="lazy" width="24" height="23" class="size-[18px]"
+                                    src="assets/images/landing/logo-react.svg" />
+                            </div>
+                        </div>
+                        <p class="mt-4 text-base-content/90">One Dashboard Page (React)</p>
+                        <p class="mt-4 text-sm text-base-content/70">What's Included:</p>
+                        <div class="mt-3 space-y-2">
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>React Version</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:x-circle" height="16"
+                                    class="text-base-content/40"/>
+
+                                <p>Next.JS Version</p>
+                            </div>
+                            <div>
+                                <div class="my-3 block border border-dashed border-base-content/10"></div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>Ecommerce Dashboard</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:x-circle" height="16"
+                                    class="text-base-content/40"/>
+
+                                <p>Apps</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:x-circle" height="16"
+                                    class="text-base-content/40"/>
+
+                                <p>Components</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:x-circle" height="16"
+                                    class="text-base-content/40"/>
+
+                                <p>Apex Charts Examples</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:x-circle" height="16"
+                                    class="text-base-content/40"/>
+
+                                <p>Authentication</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:x-circle" height="16"
+                                    class="text-base-content/40"/>
+
+                                <p>Extra Pages</p>
+                            </div>
+                        </div>
+                        <a class="btn btn-ghost btn-block mt-10 border-base-content/10" target="_blank"
+                            href="https://daisyui.com/store/">
+                            Buy Now
+                        </a>
+                    </div>
+                    <div class="rounded border border-base-content/10 p-6">
+                        <div class="inline rounded bg-primary px-3 py-1 text-sm font-medium text-primary-content">
+                            Most Popular
+                        </div>
+                        <div class="mt-2 flex items-center justify-between">
+                            <p class="text-xl font-medium">Standard</p>
+                            <p class="text-2xl font-semibold">$59</p>
+                        </div>
+                        <div class="mt-3 flex items-center gap-3">
+                            <div role="tooltip" data-tip="Javascript" class="tooltip">
+                                <img alt="Javascript" loading="lazy" width="24" height="24" class="size-5"
+                                    src="assets/images/landing/logo-js.svg" />
+                            </div>
+                            <div role="tooltip" data-tip="Typescript" class="tooltip">
+                                <img alt="Typescript" loading="lazy" width="24" height="24" class="size-5"
+                                    src="assets/images/landing/logo-ts.svg" />
+                            </div>
+                            <div role="tooltip" data-tip="React" class="tooltip">
+                                <img alt="React" loading="lazy" width="24" height="23" class="size-[18px]"
+                                    src="assets/images/landing/logo-react.svg" />
+                            </div>
+                        </div>
+                        <p class="mt-4 text-base-content/90">Multi Page (React)</p>
+                        <p class="mt-4 text-sm text-base-content/70">What's Included:</p>
+                        <div class="mt-3 space-y-2">
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>React Version</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:x-circle" height="16"
+                                    class="text-base-content/40"/>
+
+                                <p>Next.JS Version</p>
+                            </div>
+                            <div>
+                                <div class="my-3 block border border-dashed border-base-content/10"></div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>Dashboard</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>3 Apps</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>26 Components</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>Apex Charts Examples</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>4 Auth Pages</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>Extra Pages</p>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary btn-block mt-10 border-base-content/10" target="_blank"
+                            href="https://daisyui.com/store/">
+                            Buy Now
+                        </a>
+                    </div>
+                    <div class="rounded border border-base-content/10 p-6">
+                        <div class="inline rounded bg-emerald-500/10 px-3 py-1 text-sm font-medium text-emerald-600">
+                            Enhanced Version
+                        </div>
+                        <div class="mt-2 flex items-center justify-between">
+                            <p class="text-xl font-medium">Pro</p>
+                            <p class="text-2xl font-semibold">$119</p>
+                        </div>
+                        <div class="mt-3 flex items-center gap-3">
+                            <div role="tooltip" data-tip="Javascript" class="tooltip">
+                                <img alt="Javascript" loading="lazy" width="24" height="24" class="size-5"
+                                    src="assets/images/landing/logo-js.svg" />
+                            </div>
+                            <div role="tooltip" data-tip="Typescript" class="tooltip">
+                                <img alt="Typescript" loading="lazy" width="24" height="24" class="size-5"
+                                    src="assets/images/landing/logo-ts.svg" />
+                            </div>
+                            <div role="tooltip" data-tip="React" class="tooltip">
+                                <img alt="React" loading="lazy" width="24" height="23" class="size-[18px]"
+                                    src="assets/images/landing/logo-react.svg" />
+                            </div>
+                            <div role="tooltip" data-tip="Next.JS" class="tooltip">
+                                <img alt="Next" loading="lazy" width="24" height="24" class="size-5 dark:invert"
+                                    src="assets/images/landing/logo-next.svg" />
+                            </div>
+                        </div>
+                        <p class="mt-4 text-base-content/90">Multi Page (Next.JS)</p>
+                        <p class="mt-4 text-sm text-base-content/70">What's Included:</p>
+                        <div class="mt-3 space-y-2">
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>React Version</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>Next.JS Version</p>
+                            </div>
+                            <div>
+                                <div class="my-3 block border border-dashed border-base-content/10"></div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>Dashboard</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>3 Apps</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>26 Components</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>Apex Charts Examples</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>4 Auth Pages</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>Extra Pages</p>
+                            </div>
+                        </div>
+                        <a class="btn btn-ghost btn-outline btn-block mt-10 border-base-content/10" target="_blank"
+                            href="https://daisyui.com/store/">
+                            Buy Now
+                        </a>
+                    </div>
+                    <div class="rounded border border-base-content/10 p-6">
+                        <div class="inline rounded bg-teal-500/10 px-3 py-1 text-sm font-medium text-teal-600">
+                            Foundation
+                        </div>
+                        <div class="mt-2 flex items-center justify-between">
+                            <p class="text-xl font-medium">HTML</p>
+                            <p class="text-2xl font-semibold text-base-content/70">Coming Soon</p>
+                        </div>
+                        <div class="mt-3 flex items-center gap-3">
+                            <div role="tooltip" data-tip="HTML" class="tooltip">
+                                <img alt="HTML" loading="lazy" width="2000" height="2000" class="size-5"
+                                    src="assets/images/landing/logo-html.svg" />
+                            </div>
+                            <div role="tooltip" data-tip="CSS" class="tooltip">
+                                <img alt="CSS" loading="lazy" width="2183" height="2500" class="size-5"
+                                    src="assets/images/landing/logo-css.svg" />
+                            </div>
+                            <div role="tooltip" data-tip="Javascript" class="tooltip">
+                                <img alt="Javascript" loading="lazy" width="24" height="24" class="size-5"
+                                    src="assets/images/landing/logo-js.svg" />
+                            </div>
+                        </div>
+                        <p class="mt-4 text-base-content/90">Multi Page</p>
+                        <p class="mt-4 text-sm text-base-content/70">What's Included:</p>
+                        <div class="mt-3 space-y-2">
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>HTML Version</p>
+                            </div>
+                            <div>
+                                <div class="my-3 block border border-dashed border-base-content/10"></div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>Dashboard</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>3 Apps</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>26 Components</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>Apex Charts Examples</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>4 Auth Pages</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+
+                                <p>Extra Pages</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-3">
+                        You can check full details:
+                        <a class="text-primary" target="_blank"
+                            href="https://nexus.daisyui.com/docs/knowledge/package">Packages</a>
+                    </p>
+                </div>
+            </div>
+
+            <!--  End: Package -->
+        </div>
+        <div>
+            <div class="container py-12 lg:py-24">
+                <!--  Start: FAQ -->
+
+                <div class="grid gap-12 lg:grid-cols-7 lg:gap-24">
+                    <div class="col-span-3">
+                        <div class="inline-block rounded border border-purple-500/5 bg-purple-500/5 p-2.5">
+                            <Icon icon="lucide:messages-square" height="20"
+                                class="text-purple-600"/>
+                        </div>
+                        <p class="mt-3 text-3xl font-semibold">Any Question in Mind?</p>
+                        <p class="mt-3 text-base-content/70">
+                            If you have still question, don't worry. Just contact us with your queries.
+                        </p>
+                        <a class="btn btn-sm mt-4" href="https://discord.com/invite/S6TZxycVHs">Contact Us</a>
+                    </div>
+                    <div class="col-span-4">
+                        <div class="space-y-4">
+                            <div class="collapse collapse-arrow border border-base-content/10">
+                                <input aria-label="Accordion radio" type="radio" name="accordion" />
+                                <div class="collapse-title text-xl font-medium">How can i give a feedback?</div>
+                                <div class="collapse-content">
+                                    <p class="text-base">
+                                        You can provide feedback by filling out our
+                                        <a class="text-primary" target="_blank"
+                                            href="https://forms.gle/UeX3jgsjFNFcZsq9A">
+                                            Google Form
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="collapse collapse-arrow border border-base-content/10">
+                                <input aria-label="Accordion radio" type="radio" name="accordion" />
+                                <div class="collapse-title text-xl font-medium">Can i get full source code?</div>
+                                <div class="collapse-content">
+                                    <p class="text-base">
+                                        Certainly, we offer the complete source code depending on the package you've
+                                        purchased. You might look into depth:
+                                        <a class="text-primary" target="_blank"
+                                            href="https://nexus.daisyui.com/docs/knowledge/package">
+                                            Packages
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="collapse collapse-arrow border border-base-content/10">
+                                <input aria-label="Accordion radio" type="radio" name="accordion" />
+                                <div class="collapse-title text-xl font-medium">
+                                    Will there be any future payments required?
+                                </div>
+                                <div class="collapse-content">
+                                    <p class="text-base">
+                                        Absolutely not. It's a one-time purchase, with no hidden charges or future
+                                        payments to worry about.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="collapse collapse-arrow border border-base-content/10">
+                                <input aria-label="Accordion radio" type="radio" name="accordion" />
+                                <div class="collapse-title text-xl font-medium">
+                                    Are there plans for future updates, and will they incur any costs?
+                                </div>
+                                <div class="collapse-content">
+                                    <p class="text-base">
+                                        All future updates are completely free. No payment is required for any upcoming
+                                        updates. Yes, there are many plans for future updates. You can checkout
+                                        <a class="text-primary" target="_blank"
+                                            href="https://nexus.daisyui.com/docs/support/roadmap">
+                                            future roadmap
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="collapse collapse-arrow border border-base-content/10">
+                                <input aria-label="Accordion radio" type="radio" name="accordion" />
+                                <div class="collapse-title text-xl font-medium">Do I need a backend for this?</div>
+                                <div class="collapse-content">
+                                    <p class="text-base">
+                                        No backend is required to run this UI template. However, you can integrate any
+                                        type of backend as needed.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="collapse collapse-arrow border border-base-content/10">
+                                <input aria-label="Accordion radio" type="radio" name="accordion" />
+                                <div class="collapse-title text-xl font-medium">
+                                    Is there any updates in the future?
+                                </div>
+                                <div class="collapse-content">
+                                    <p class="text-base">
+                                        Yes, Our team constantly improves the admin template based on user feedback and
+                                        industry trends. You can see product
+                                        <a class="text-primary" target="_blank"
+                                            href="https://nexus.daisyui.com/docs/support/roadmap">Roadmap</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  End: FAQ -->
+            </div>
+        </div>
+        <div>
+            <div class="container py-16">
+                <!--  Start: Footer -->
+                <div class="relative grid items-center overflow-hidden rounded-xl bg-primary/5 py-0 lg:grid-cols-3">
+                    <div class="col-span-2 p-4 text-center md:p-8">
+                        <p class="text-xl font-medium md:text-3xl">Get started with Nexus Today</p>
+                        <div class="mt-6 inline-flex items-center gap-3">
+                            <a href="https://daisyui.com/store/">
+                                <button class="btn btn-primary gap-2">
+                                    <Icon icon="lucide:shopping-cart" height="16"/>
+                                    Purchase Now
+                                </button>
+                            </a>
+                            <a href="./dashboards-ecommerce.html">
+                                <button class="btn btn-ghost">View Demo</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="-mt-8 hidden h-96 rotate-[15deg] lg:inline">
+                        <img alt="mobile-landing" loading="lazy" width="300" height="537" class="inline dark:hidden"
+                            src="assets/images/landing/mobile-hero.png" />
+                        <img alt="mobile-landing" loading="lazy" width="300" height="537" class="hidden dark:inline"
+                            src="assets/images/landing/mobile-hero-dark.png" />
+                    </div>
+                </div>
+                <div class="mt-12 text-center">
+                    <Footer />
+                </div>
+
+                <!--  End: Footer -->
+            </div>
+        </div>
+        <div class="fixed bottom-5 end-5 z-10">
+            <!--  Start: Theme Toggler -->
+
+            <button aria-label="Theme toggler" data-action="theme-toggle"
+                class="btn btn-circle btn-ghost border border-base-content/10 text-base-content/70 hover:bg-base-content/10">
+                <Icon icon="lucide:sun" height="20" class="hidden dark:inline"/>
+
+                <Icon icon="lucide:moon" height="20" class="inline dark:hidden"/>
+            </button>
+
+            <!--  End: Theme Toggler -->
+        </div>
+
+
+
+    </body>
 </template>

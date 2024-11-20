@@ -8,8 +8,6 @@ defineProps<{
 
 <template>
     <Link :href="href">
-        <li><a>
             <slot />
-        </a></li> 
     </Link>
 </template>
