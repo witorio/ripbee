@@ -797,13 +797,7 @@ const showingNavigationDropdown = ref(false);
                                         <li>
                                             <div class="text-error">
                                                 <Icon icon="lucide:log-out" height="16" />
-                                                Logout
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="text-error">
-                                                <Icon icon="lucide:log-out" height="16" />
-                                                <DropdownLink :href="route('logout')" method="post" as="button">Logout
+                                                <DropdownLink :href="route('logout')" method="post" as="span">Logout
                                                 </DropdownLink>
                                             </div>
                                         </li>
