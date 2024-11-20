@@ -36,7 +36,7 @@ const showingNavigationDropdown = ref(false);
 
                             <li class="mb-0.5">
                                 <NavLink :href="route('wallet')" :active="route().current('wallet')">
-                                    <Icon icon="lucide:airplay" height="18" />
+                                    <Icon icon="lucide:wallet" height="18" />
                                     Wallet
                                 </NavLink>
                                 <NavLink :href="route('buy')" :active="route().current('buy')">
