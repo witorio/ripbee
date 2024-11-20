@@ -79,9 +79,8 @@ const submit = () => {
                         </div>
                         <label class="label">
                             <span class="label-text"></span>
-                            <a class="label-text text-xs text-base-content/80" href="./auth-forgot-password.html">
-                                Forgot Password?
-                            </a>
+                            <Link :href="route('login')" class="label-text text-xs text-base-content/80">Forgot
+                            Password?</Link>
                         </label>
                     </div>
                     <div class="mt-4 flex items-center gap-3 md:mt-6">
