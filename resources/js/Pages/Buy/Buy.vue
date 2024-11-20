@@ -5,29 +5,6 @@ import { usePage, Head } from '@inertiajs/vue3';
 import { Icon } from '@iconify/vue';
 
 const products = usePage().props.products // Access props from Inertia.js
-
-const loadCDN = (url) => {
-  return new Promise((resolve, reject) => {
-    const script = document.createElement("script");
-    script.src = url;
-    script.async = true;
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error(`Failed to load ${url}`));
-    document.head.appendChild(script);
-  });
-};
-
-onMounted(() => {
-      // Ensure the script is loaded after the component is mounted
-      loadCDN("https://cdnjs.cloudflare.com/ajax/libs/choices.js/10.2.0/choices.min.js")
-        .then(() => {
-          console.log("Script loaded successfully!");
-        })
-        .catch((error) => {
-          console.error("Error loading script:", error);
-        });
-    });
-
 </script>
 
 
