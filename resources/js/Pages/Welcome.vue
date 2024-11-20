@@ -21,51 +21,51 @@ function handleImageError() {
 
 // landing.js
 const initExample = () => {
-  document.getElementById("showcase_i_checkbox").indeterminate = true
-  const ratingExample = document.querySelectorAll('#rating_example input[type="checkbox"]')
+    document.getElementById("showcase_i_checkbox").indeterminate = true
+    const ratingExample = document.querySelectorAll('#rating_example input[type="checkbox"]')
 
-  ratingExample.forEach((star, index) => {
-    star.addEventListener("change", () => {
-      ratingExample.forEach((star, i) => {
-        star.checked = false
-      })
-      ratingExample[index].checked = true
+    ratingExample.forEach((star, index) => {
+        star.addEventListener("change", () => {
+            ratingExample.forEach((star, i) => {
+                star.checked = false
+            })
+            ratingExample[index].checked = true
+        })
     })
-  })
 }
 
 const initTopBar = () => {
-  const topBar = document.getElementById("landing_top_bar")
-  const onWindowScroll = () => {
-    if (window.scrollY < 30) {
-      topBar.classList.add("z-[60]", "border-transparent")
-      topBar.classList.remove(
-        "z-20",
-        "border-b",
-        "border-base-content/10",
-        "bg-base-100",
-        "lg:bg-opacity-90",
-        "dark:lg:bg-opacity-95"
-      )
-    } else {
-      topBar.classList.remove("z-[60]", "border-transparent")
-      topBar.classList.add(
-        "z-20",
-        "border-b",
-        "border-base-content/10",
-        "bg-base-100",
-        "lg:bg-opacity-90",
-        "dark:lg:bg-opacity-95"
-      )
+    const topBar = document.getElementById("landing_top_bar")
+    const onWindowScroll = () => {
+        if (window.scrollY < 30) {
+            topBar.classList.add("z-[60]", "border-transparent")
+            topBar.classList.remove(
+                "z-20",
+                "border-b",
+                "border-base-content/10",
+                "bg-base-100",
+                "lg:bg-opacity-90",
+                "dark:lg:bg-opacity-95"
+            )
+        } else {
+            topBar.classList.remove("z-[60]", "border-transparent")
+            topBar.classList.add(
+                "z-20",
+                "border-b",
+                "border-base-content/10",
+                "bg-base-100",
+                "lg:bg-opacity-90",
+                "dark:lg:bg-opacity-95"
+            )
+        }
     }
-  }
-  window.addEventListener("scroll", onWindowScroll)
-  onWindowScroll()
+    window.addEventListener("scroll", onWindowScroll)
+    onWindowScroll()
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  initExample()
-  initTopBar()
+    initExample()
+    initTopBar()
 })
 
 </script>
@@ -90,8 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     readonly="" type="checkbox" />
                                 <div class="drawer-content">
                                     <button class="btn btn-square btn-ghost" onclick="side_drawer_toggle.click()">
-                                        <Icon icon="lucide:menu" height="20"
-                                            class="inline-block text-xl"/>
+                                        <Icon icon="lucide:menu" height="20" class="inline-block text-xl" />
                                     </button>
                                 </div>
                                 <div class="drawer-side">
@@ -99,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     <ul class="menu min-h-full w-80 gap-2 bg-base-100 p-4 text-base-content">
                                         <li class="font-medium">
                                             <div class="inline">
-                                                <ApplicationLogo  alt="logo-dark" loading="lazy" height="40"/>
+                                                <ApplicationLogo alt="logo-dark" loading="lazy" height="40" />
                                             </div>
                                         </li>
                                         <li class="font-medium">
@@ -119,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <!--  Start: Logo -->
 
                         <div class="inline">
-                            <ApplicationLogo  alt="logo-dark" loading="lazy" height="80"/>
+                            <ApplicationLogo alt="logo-dark" loading="lazy" height="80" />
                         </div>
 
                         <!--  End: Logo -->
@@ -130,14 +129,14 @@ document.addEventListener("DOMContentLoaded", function () {
                         <nav v-if="canLogin" class="-mx-3 flex flex-1 justify-end">
                             <Link v-if="$page.props.auth.user" :href="route('wallet')"
                                 class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#DBAA28] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                                <button class="btn btn-primary btn-sm">Wallet</button>
+                            <button class="btn btn-primary btn-sm">Wallet</button>
                             </Link>
 
 
                             <template v-else>
                                 <Link :href="route('login')"
                                     class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#DBAA28] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                                    <button class="btn btn-ghost btn-sm">Login</button>
+                                <button class="btn btn-ghost btn-sm">Login</button>
                                 </Link>
 
                                 <Link v-if="canRegister" :href="route('register')"
@@ -189,14 +188,14 @@ document.addEventListener("DOMContentLoaded", function () {
                         <div class="mt-8 inline-flex items-center gap-3">
                             <a href="./dashboards-ecommerce.html">
                                 <button class="btn btn-primary gap-2">
-                                    <Icon icon="lucide:airplay" height="18"/>
+                                    <Icon icon="lucide:airplay" height="18" />
 
                                     Dashboard
                                 </button>
                             </a>
                             <a href="./ui-components-accordion.html">
                                 <button class="btn btn-ghost gap-2">
-                                    <Icon icon="lucide:box" height="18"/>
+                                    <Icon icon="lucide:box" height="18" />
 
                                     Components
                                 </button>
@@ -266,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="container py-12 2xl:py-24">
                 <div class="text-center">
                     <div class="inline-block rounded border border-indigo-500/5 bg-indigo-500/5 p-2.5">
-                        <Icon icon="lucide:wand" height="20" class="text-indigo-600"/>
+                        <Icon icon="lucide:wand" height="20" class="text-indigo-600" />
                     </div>
                     <p class="mt-2 text-3xl font-semibold">Why you choose</p>
                     <p class="mt-3 inline-block max-w-md text-base-content/80">
@@ -277,7 +276,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="mt-8 grid grid-cols-2 gap-8 lg:grid-cols-4 2xl:mt-24 2xl:gap-16">
                     <div class="text-center">
                         <div class="inline-block">
-                            <Icon icon="lucide:hexagon" height="28"/>
+                            <Icon icon="lucide:hexagon" height="28" />
                         </div>
                         <p class="mt-3 text-lg font-medium">Branding</p>
                         <p class="mt-1 text-sm text-base-content/80">
@@ -286,7 +285,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                     <div class="text-center">
                         <div class="inline-block">
-                            <Icon icon="lucide:combine" height="28"/>
+                            <Icon icon="lucide:combine" height="28" />
                         </div>
                         <p class="mt-3 text-lg font-medium">Enhanced UX</p>
                         <p class="mt-1 text-sm text-base-content/80">
@@ -295,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                     <div class="text-center">
                         <div class="inline-block">
-                            <Icon icon="lucide:pencil-ruler" height="28"/>
+                            <Icon icon="lucide:pencil-ruler" height="28" />
                         </div>
                         <p class="mt-3 text-lg font-medium">Consistent UI</p>
                         <p class="mt-1 text-sm text-base-content/80">
@@ -304,7 +303,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                     <div class="text-center">
                         <div class="inline-block">
-                            <Icon icon="lucide:monitor-smartphone" height="28"/>
+                            <Icon icon="lucide:monitor-smartphone" height="28" />
                         </div>
                         <p class="mt-3 text-lg font-medium">Responsive</p>
                         <p class="mt-1 text-sm text-base-content/80">
@@ -313,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                     <div class="text-center">
                         <div class="inline-block">
-                            <Icon icon="lucide:case-sensitive" height="28"/>
+                            <Icon icon="lucide:case-sensitive" height="28" />
                         </div>
                         <p class="mt-3 text-lg font-medium">Typography</p>
                         <p class="mt-1 text-sm text-base-content/80">
@@ -323,7 +322,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                     <div class="text-center">
                         <div class="inline-block">
-                            <Icon icon="lucide:pencil-line" height="28"/>
+                            <Icon icon="lucide:pencil-line" height="28" />
                         </div>
                         <p class="mt-3 text-lg font-medium">Customizable</p>
                         <p class="mt-1 text-sm text-base-content/80">
@@ -332,7 +331,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                     <div class="text-center">
                         <div class="inline-block">
-                            <Icon icon="lucide:sun-moon" height="28"/>
+                            <Icon icon="lucide:sun-moon" height="28" />
                         </div>
                         <p class="mt-3 text-lg font-medium">Color Presets</p>
                         <p class="mt-1 text-sm text-base-content/80">
@@ -342,7 +341,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                     <div class="text-center">
                         <div class="inline-block">
-                            <Icon icon="lucide:code" height="28"/>
+                            <Icon icon="lucide:code" height="28" />
                         </div>
                         <p class="mt-3 text-lg font-medium">Easy Development</p>
                         <p class="mt-1 text-sm text-base-content/80">
@@ -364,7 +363,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="relative z-10 grid gap-12 lg:grid-cols-7 lg:gap-24">
                     <div class="lg:col-span-3">
                         <div class="inline-block rounded border border-teal-500/5 bg-teal-500/5 p-2.5">
-                            <Icon icon="lucide:box" height="20" class="text-teal-600"/>
+                            <Icon icon="lucide:box" height="20" class="text-teal-600" />
                         </div>
                         <p class="mt-3 text-3xl font-semibold">Components</p>
                         <p class="mt-4 text-base-content/70">
@@ -375,7 +374,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <a href="./ui-components-accordion.html">
                                 <button class="btn btn-outline btn-sm gap-2">
                                     View Components
-                                    <Icon icon="lucide:chevron-right" height="18"/>
+                                    <Icon icon="lucide:chevron-right" height="18" />
                                 </button>
                             </a>
                         </div>
@@ -384,22 +383,22 @@ document.addEventListener("DOMContentLoaded", function () {
                         <div class="rounded border border-dashed border-base-content/10 p-10 text-center">
                             <div class="flex flex-wrap justify-center gap-6">
                                 <button class="btn btn-warning btn-sm gap-2">
-                                    <Icon icon="lucide:search" height="16"/>
+                                    <Icon icon="lucide:search" height="16" />
                                     Search
                                 </button>
                                 <button class="btn btn-ghost btn-sm gap-2">
-                                    <Icon icon="lucide:upload" height="16"/>
+                                    <Icon icon="lucide:upload" height="16" />
                                     Upload
                                 </button>
                                 <button aria-label="Buy Now" class="btn btn-circle btn-primary btn-sm gap-2">
-                                    <Icon icon="lucide:shopping-cart" height="16"/>
+                                    <Icon icon="lucide:shopping-cart" height="16" />
                                 </button>
                                 <button class="btn btn-success btn-sm">Toast</button>
                                 <div class="dropdown dropdown-bottom">
                                     <label tabindex="0" class="items-center">
                                         <button type="button" class="btn btn-sm">
                                             Dropdown
-                                            <Icon icon="lucide:chevron-down" height="18"/>
+                                            <Icon icon="lucide:chevron-down" height="18" />
                                         </button>
                                     </label>
                                     <ul tabindex="0"
@@ -461,7 +460,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     <button class="btn join-item btn-sm">4</button>
                                 </div>
                                 <div role="alert" class="alert alert-info inline-flex w-fit gap-2 px-2 py-1.5">
-                                    <Icon icon="lucide:indo" height="18"/>
+                                    <Icon icon="lucide:indo" height="18" />
                                     <span>New update available.</span>
                                 </div>
                             </div>
@@ -589,7 +588,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="relative">
                 <div class="text-center">
                     <div class="inline-block rounded border border-orange-500/5 bg-orange-500/5 p-2.5">
-                        <Icon icon="lucide:sparkles" height="20" class="text-orange-600"/>
+                        <Icon icon="lucide:sparkles" height="20" class="text-orange-600" />
                     </div>
                     <h2 class="mt-1 text-3xl font-semibold">What People Say</h2>
                 </div>
@@ -601,15 +600,15 @@ document.addEventListener("DOMContentLoaded", function () {
                         </div>
                     </div>
                     <div class="mt-4 flex items-center justify-center gap-1">
-                        <Icon icon="lucide:star" height="12" class="text-orange-400"/>
+                        <Icon icon="lucide:star" height="12" class="text-orange-400" />
 
-                        <Icon icon="lucide:star" height="12" class="text-orange-400"/>
+                        <Icon icon="lucide:star" height="12" class="text-orange-400" />
 
-                        <Icon icon="lucide:star" height="12" class="text-orange-400"/>
+                        <Icon icon="lucide:star" height="12" class="text-orange-400" />
 
-                        <Icon icon="lucide:star" height="12" class="text-orange-400"/>
+                        <Icon icon="lucide:star" height="12" class="text-orange-400" />
 
-                        <Icon icon="lucide:star" height="12" class="text-orange-400"/>
+                        <Icon icon="lucide:star" height="12" class="text-orange-400" />
                     </div>
                     <p class="mt-4 inline-block max-w-[600px] text-center">
                         This is the ultimate admin dashboard for any React project
@@ -628,7 +627,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="container py-24">
                 <div class="text-center">
                     <div class="inline-block rounded border border-green-500/5 bg-green-500/5 p-2.5">
-                        <Icon icon="lucide:dollar-sign" height="20" class="text-green-600"/>
+                        <Icon icon="lucide:dollar-sign" height="20" class="text-green-600" />
                     </div>
                     <p class="mt-1 text-3xl font-semibold">Packages</p>
                     <p class="mt-3 inline-block max-w-sm text-base-content/70">
@@ -664,13 +663,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         <p class="mt-4 text-sm text-base-content/70">What's Included:</p>
                         <div class="mt-3 space-y-2">
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>React Version</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:x-circle" height="16"
-                                    class="text-base-content/40"/>
+                                <Icon icon="lucide:x-circle" height="16" class="text-base-content/40" />
 
                                 <p>Next.JS Version</p>
                             </div>
@@ -678,37 +676,32 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <div class="my-3 block border border-dashed border-base-content/10"></div>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>Ecommerce Dashboard</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:x-circle" height="16"
-                                    class="text-base-content/40"/>
+                                <Icon icon="lucide:x-circle" height="16" class="text-base-content/40" />
 
                                 <p>Apps</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:x-circle" height="16"
-                                    class="text-base-content/40"/>
+                                <Icon icon="lucide:x-circle" height="16" class="text-base-content/40" />
 
                                 <p>Components</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:x-circle" height="16"
-                                    class="text-base-content/40"/>
+                                <Icon icon="lucide:x-circle" height="16" class="text-base-content/40" />
 
                                 <p>Apex Charts Examples</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:x-circle" height="16"
-                                    class="text-base-content/40"/>
+                                <Icon icon="lucide:x-circle" height="16" class="text-base-content/40" />
 
                                 <p>Authentication</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:x-circle" height="16"
-                                    class="text-base-content/40"/>
+                                <Icon icon="lucide:x-circle" height="16" class="text-base-content/40" />
 
                                 <p>Extra Pages</p>
                             </div>
@@ -744,13 +737,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         <p class="mt-4 text-sm text-base-content/70">What's Included:</p>
                         <div class="mt-3 space-y-2">
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>React Version</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:x-circle" height="16"
-                                    class="text-base-content/40"/>
+                                <Icon icon="lucide:x-circle" height="16" class="text-base-content/40" />
 
                                 <p>Next.JS Version</p>
                             </div>
@@ -758,32 +750,32 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <div class="my-3 block border border-dashed border-base-content/10"></div>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>Dashboard</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>3 Apps</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>26 Components</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>Apex Charts Examples</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>4 Auth Pages</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>Extra Pages</p>
                             </div>
@@ -823,12 +815,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         <p class="mt-4 text-sm text-base-content/70">What's Included:</p>
                         <div class="mt-3 space-y-2">
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>React Version</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>Next.JS Version</p>
                             </div>
@@ -836,32 +828,32 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <div class="my-3 block border border-dashed border-base-content/10"></div>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>Dashboard</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>3 Apps</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>26 Components</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>Apex Charts Examples</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>4 Auth Pages</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>Extra Pages</p>
                             </div>
@@ -897,7 +889,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <p class="mt-4 text-sm text-base-content/70">What's Included:</p>
                         <div class="mt-3 space-y-2">
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>HTML Version</p>
                             </div>
@@ -905,32 +897,32 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <div class="my-3 block border border-dashed border-base-content/10"></div>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>Dashboard</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>3 Apps</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>26 Components</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>Apex Charts Examples</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>4 Auth Pages</p>
                             </div>
                             <div class="flex items-center gap-3">
-                                <Icon icon="lucide:check" height="16" class="text-green-600"/>
+                                <Icon icon="lucide:check" height="16" class="text-green-600" />
 
                                 <p>Extra Pages</p>
                             </div>
@@ -955,8 +947,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="grid gap-12 lg:grid-cols-7 lg:gap-24">
                     <div class="col-span-3">
                         <div class="inline-block rounded border border-purple-500/5 bg-purple-500/5 p-2.5">
-                            <Icon icon="lucide:messages-square" height="20"
-                                class="text-purple-600"/>
+                            <Icon icon="lucide:messages-square" height="20" class="text-purple-600" />
                         </div>
                         <p class="mt-3 text-3xl font-semibold">Any Question in Mind?</p>
                         <p class="mt-3 text-base-content/70">
@@ -1061,7 +1052,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <div class="mt-6 inline-flex items-center gap-3">
                             <a href="https://daisyui.com/store/">
                                 <button class="btn btn-primary gap-2">
-                                    <Icon icon="lucide:shopping-cart" height="16"/>
+                                    <Icon icon="lucide:shopping-cart" height="16" />
                                     Purchase Now
                                 </button>
                             </a>
@@ -1084,20 +1075,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 <!--  End: Footer -->
             </div>
         </div>
-        <div class="fixed bottom-5 end-5 z-10">
-            <!--  Start: Theme Toggler -->
-
-            <button aria-label="Theme toggler" data-action="theme-toggle"
-                class="btn btn-circle btn-ghost border border-base-content/10 text-base-content/70 hover:bg-base-content/10">
-                <Icon icon="lucide:sun" height="20" class="hidden dark:inline"/>
-
-                <Icon icon="lucide:moon" height="20" class="inline dark:hidden"/>
-            </button>
-
-            <!--  End: Theme Toggler -->
-        </div>
-
-
 
     </body>
 </template>
