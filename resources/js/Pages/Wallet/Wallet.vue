@@ -12,14 +12,7 @@ import { Icon } from '@iconify/vue';
         <div class="content-wrapper">
               <div>
                 <div class="flex items-center justify-between">
-                  <h3 class="text-lg font-medium">Business Overview</h3>
-                  <div aria-label="Breadcrumbs" class="breadcrumbs hidden p-0 text-sm sm:inline">
-                    <ul>
-                      <li>Nexus</li>
-                      <li>Dashboards</li>
-                      <li>Ecommerce</li>
-                    </ul>
-                  </div>
+                  <h3 class="text-lg font-medium">Wallet</h3>
                 </div>
                 <div class="mt-6">
                   <!--  Start: Dashboard Counter Widget -->
