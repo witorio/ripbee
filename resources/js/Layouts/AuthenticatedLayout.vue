@@ -59,87 +59,10 @@ const showingNavigationDropdown = ref(false);
                             </li>
 
                             <!-- End: Transactions -->
-
-
                             <!--  End: Dashboard -->
-                            <!--  Start: Apps -->
 
-                            <li class="menu-title font-semibold">Apps</li>
-                            <li class="mb-0.5">
-                                <details>
-                                    <summary>
-                                        <div class="flex items-center gap-2">
-                                            <Icon icon="lucide:store" height="18" />
-                                            Ecommerce
-                                            <div class="pro-badge">Pro</div>
-                                        </div>
-                                    </summary>
-                                    <ul>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./apps-ecommerce-orders.html">
-                                                <div class="flex items-center gap-2">
-                                                    Orders
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./apps-ecommerce-products.html">
-                                                <div class="flex items-center gap-2">
-                                                    Products
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./apps-ecommerce-sellers.html">
-                                                <div class="flex items-center gap-2">
-                                                    Sellers
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./apps-ecommerce-customers.html">
-                                                <div class="flex items-center gap-2">
-                                                    Customers
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./apps-ecommerce-shops.html">
-                                                <div class="flex items-center gap-2">
-                                                    Shops
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </details>
-                            </li>
-                            <li class="mb-0.5">
-                                <a class="hover:bg-base-content/15" href="./apps-file-manager.html">
-                                    <div class="flex items-center gap-2">
-                                        <Icon icon="lucide:server" height="18" />
-                                        File Manager
-                                        <div class="pro-badge">Pro</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="mb-0.5">
-                                <a class="hover:bg-base-content/15" href="./apps-chat.html">
-                                    <div class="flex items-center gap-2">
-                                        <Icon icon="lucide:messages-square" height="18" />
-                                        Chat
-                                        <div class="pro-badge">Pro</div>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <!--  End: Apps -->
-                            <!--  Start: Pages -->
-                            <li class="menu-title font-semibold">Pages</li>
+                            <!--  Start: Settins -->
+                            <li class="menu-title font-semibold">Settings</li>
                             <li class="mb-0.5">
                                 <a class="hover:bg-base-content/15" href="./landing.html">
                                     <div class="flex items-center gap-2">
@@ -154,8 +77,7 @@ const showingNavigationDropdown = ref(false);
                                     <summary>
                                         <div class="flex items-center gap-2">
                                             <Icon icon="lucide:shield-check" height="18" />
-                                            Auth
-                                            <div class="pro-badge">Pro</div>
+                                            Settings
                                         </div>
                                     </summary>
                                     <ul>
@@ -175,360 +97,62 @@ const showingNavigationDropdown = ref(false);
                                                 </div>
                                             </a>
                                         </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./auth-forgot-password.html">
-                                                <div class="flex items-center gap-2">
-                                                    Forgot Password
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./auth-reset-password.html">
-                                                <div class="flex items-center gap-2">
-                                                    Reset Password
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
                                     </ul>
                                 </details>
                             </li>
+                            <!--  End: Settings -->
 
-                            <!--  End: Pages -->
-                            <!--  Start: UI Showcase -->
-                            <li class="menu-title font-semibold">UI Showcase</li>
+                            <!--  Start: Learn -->
+                            <li class="menu-title font-semibold">Learn</li>
                             <li class="mb-0.5">
-                                <details>
-                                    <summary>
-                                        <div class="flex items-center gap-2">
-                                            <Icon icon="lucide:package" height="18" />
-                                            Components
-                                            <div class="pro-badge">Pro</div>
-                                        </div>
-                                    </summary>
-                                    <ul>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-components-accordion.html">
-                                                <div class="flex items-center gap-2">
-                                                    Accordion
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-components-alert.html">
-                                                <div class="flex items-center gap-2">
-                                                    Alert
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-components-avatar.html">
-                                                <div class="flex items-center gap-2">
-                                                    Avatar
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-components-badge.html">
-                                                <div class="flex items-center gap-2">
-                                                    Badge
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-components-breadcrumb.html">
-                                                <div class="flex items-center gap-2">
-                                                    Breadcrumb
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-components-button.html">
-                                                <div class="flex items-center gap-2">
-                                                    Button
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-components-countdown.html">
-                                                <div class="flex items-center gap-2">
-                                                    Countdown
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-components-drawer.html">
-                                                <div class="flex items-center gap-2">
-                                                    Drawer
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-components-dropdown.html">
-                                                <div class="flex items-center gap-2">
-                                                    Dropdown
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-components-loading.html">
-                                                <div class="flex items-center gap-2">
-                                                    Loading
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-components-menu.html">
-                                                <div class="flex items-center gap-2">
-                                                    Menu
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-components-modal.html">
-                                                <div class="flex items-center gap-2">
-                                                    Modal
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-components-pagination.html">
-                                                <div class="flex items-center gap-2">
-                                                    Pagination
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-components-progress.html">
-                                                <div class="flex items-center gap-2">
-                                                    Progress
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-components-step.html">
-                                                <div class="flex items-center gap-2">
-                                                    Step
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-components-tab.html">
-                                                <div class="flex items-center gap-2">
-                                                    Tab
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-components-timeline.html">
-                                                <div class="flex items-center gap-2">
-                                                    Timeline
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-components-toast.html">
-                                                <div class="flex items-center gap-2">
-                                                    Toast
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-components-tooltip.html">
-                                                <div class="flex items-center gap-2">
-                                                    Tooltip
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </details>
-                            </li>
-                            <li class="mb-0.5">
-                                <details>
-                                    <summary>
-                                        <div class="flex items-center gap-2">
-                                            <Icon icon="lucide:file-text" height="18" />
-                                            Forms
-                                            <div class="pro-badge">Pro</div>
-                                        </div>
-                                    </summary>
-                                    <ul>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-forms-checkbox.html">
-                                                <div class="flex items-center gap-2">
-                                                    Checkbox
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-forms-file.html">
-                                                <div class="flex items-center gap-2">
-                                                    File
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-forms-input.html">
-                                                <div class="flex items-center gap-2">
-                                                    Input
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-forms-radio.html">
-                                                <div class="flex items-center gap-2">
-                                                    Radio
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-forms-range.html">
-                                                <div class="flex items-center gap-2">
-                                                    Range
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-forms-rating.html">
-                                                <div class="flex items-center gap-2">
-                                                    Rating
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="mb-0.5">
-                                            <a class="hover:bg-base-content/15" href="./ui-forms-toggle.html">
-                                                <div class="flex items-center gap-2">
-                                                    Toggle
-                                                    <div class="pro-badge">Pro</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </details>
-                            </li>
-                            <li class="mb-0.5">
-                                <details>
-                                    <summary>
-                                        <div class="flex items-center gap-2">
-                                            <Icon icon="lucide:bar-chart-big" height="18" />
-                                            Charts
-                                            <div class="pro-badge">Pro</div>
-                                        </div>
-                                    </summary>
-                                    <ul>
-                                        <li class="mb-0.5">
-                                            <details>
-                                                <summary>
-                                                    <div class="flex items-center gap-2">
-                                                        Apex
-                                                        <div class="pro-badge">Pro</div>
-                                                    </div>
-                                                </summary>
-                                                <ul>
-                                                    <li class="mb-0.5">
-                                                        <a class="hover:bg-base-content/15"
-                                                            href="./ui-charts-apex-area.html">
-                                                            <div class="flex items-center gap-2">
-                                                                Area
-                                                                <div class="pro-badge">Pro</div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li class="mb-0.5">
-                                                        <a class="hover:bg-base-content/15"
-                                                            href="./ui-charts-apex-bar.html">
-                                                            <div class="flex items-center gap-2">
-                                                                Bar
-                                                                <div class="pro-badge">Pro</div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li class="mb-0.5">
-                                                        <a class="hover:bg-base-content/15"
-                                                            href="./ui-charts-apex-column.html">
-                                                            <div class="flex items-center gap-2">
-                                                                Column
-                                                                <div class="pro-badge">Pro</div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li class="mb-0.5">
-                                                        <a class="hover:bg-base-content/15"
-                                                            href="./ui-charts-apex-line.html">
-                                                            <div class="flex items-center gap-2">
-                                                                Line
-                                                                <div class="pro-badge">Pro</div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li class="mb-0.5">
-                                                        <a class="hover:bg-base-content/15"
-                                                            href="./ui-charts-apex-pie.html">
-                                                            <div class="flex items-center gap-2">
-                                                                Pie
-                                                                <div class="pro-badge">Pro</div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </details>
-                                        </li>
-                                    </ul>
-                                </details>
-                            </li>
-
-                            <!--  End: UI Showcase -->
-                            <!--  Start: Others -->
-
-                            <li class="menu-title font-semibold">Other</li>
-                            <li class="mb-0.5">
-                                <a class="hover:bg-base-content/15" href="https://nexus.daisyui.com/docs/introduction"
-                                    target="_blank">
+                                <a class="hover:bg-base-content/15" href="./landing.html">
                                     <div class="flex items-center gap-2">
-                                        <Icon icon="lucide:book-open-text" height="18" />
-                                        Documentation
+                                        <Icon icon="lucide:file" height="18" />
+                                        Landing
                                     </div>
                                 </a>
                             </li>
+                            <li class="mb-0.5">
+                                <details>
+                                    <summary>
+                                        <div class="flex items-center gap-2">
+                                            <Icon icon="lucide:shield-check" height="18" />
+                                            Settings
+                                        </div>
+                                    </summary>
+                                    <ul>
+                                        <li class="mb-0.5">
+                                            <a class="hover:bg-base-content/15" href="./auth-login.html">
+                                                <div class="flex items-center gap-2">
+                                                    Login
+                                                    <div class="pro-badge">Pro</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="mb-0.5">
+                                            <a class="hover:bg-base-content/15" href="./auth-register.html">
+                                                <div class="flex items-center gap-2">
+                                                    Register
+                                                    <div class="pro-badge">Pro</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </details>
+                            </li>
+                            <!--  End: Learn -->
 
-                            <!--  End: Others -->
                         </ul>
                     </div>
 
                     <!--  Start: Note With Action -->
 
                     <div class="mx-4 hidden rounded bg-base-200 px-3 py-4 lg:block">
-                        <p class="text-center text-base font-medium">Need Premium?</p>
-                        <p class="mt-3 text-center text-sm">Access all features with single time purchase</p>
+                        <p class="text-center text-base font-medium">More?</p>
+                        <p class="mt-3 text-center text-sm">Learn about RipBee investing</p>
                         <div class="mt-3 text-center">
                             <a target="_blank" href="https://daisyui.com/store/">
-                                <button class="btn btn-primary btn-sm">Purchase</button>
+                                <button class="btn btn-primary btn-sm">Learn</button>
                             </a>
                         </div>
                     </div>
