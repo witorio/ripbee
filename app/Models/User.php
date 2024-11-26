@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Wallet;
 
 class User extends Authenticatable
 {
@@ -35,7 +36,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
      * @return array<string, string>
      */
@@ -45,5 +46,20 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Boot method to handle events.
+     */
+    protected static function booted()
+    {
+        // Automatically create a wallet when a new user is created
+        static::created(function ($user) {
+            Wallet::create([
+                'user_id' => $user->id,
+                'worth' => 0, // Default wallet balance
+                'currency' => 'EUR', // Default currency
+            ]);
+        });
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\WalletController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,7 +28,10 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/buy', [ProductController::class, 'buy'])->middleware(['auth', 'verified'])->name('buy');
 Route::get('/sell', [ProductController::class, 'buy'])->middleware(['auth', 'verified'])->name('sell'); //example only, whole endpoints is wrong
-Route::get('/deposit', [ProductController::class, 'buy'])->middleware(['auth', 'verified'])->name('deposit'); //example only, whole endpoints is wrong
+Route::get('/deposit', [WalletController::class, 'deposit'])->middleware(['auth', 'verified'])->name('deposit'); 
+Route::get('/withdraw', [WalletController::class, 'withdraw'])->middleware(['auth', 'verified'])->name('withdraw'); 
+
+Route::post('/transfer', [WalletController::class, 'update'])->middleware(['auth', 'verified'])->name('transfer.update'); 
 
 
 require __DIR__.'/auth.php';

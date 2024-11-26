@@ -56,6 +56,10 @@ const showingNavigationDropdown = ref(false);
                                     <Icon icon="lucide:circle-dollar-sign" height="18" />
                                     Deposit
                                 </NavLink>
+                                <NavLink :href="route('withdraw')" :active="route().current('withdraw')">
+                                    <Icon icon="lucide:circle-dollar-sign" height="18" />
+                                    Withdraw
+                                </NavLink>
                             </li>
 
                             <!-- End: Transactions -->
