@@ -13,14 +13,15 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/choices.js/10.2.0/choices.min.css" />
 
         <!-- Scripts -->
-        @routes
-        @vite(['resources/js/scripts/main.ts', 'resources/js/app.ts', "resources/js/Pages/{$page['component']}.vue"])
-        @inertiaHead
         <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.53.0/apexcharts.min.js"></script>
         <script src="assets/js/pages/dashboards/ecommerce.js"></script>
         <script src="assets/js/components/table.js"></script>
+        <script src="assets/js/main.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.7/simplebar.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/choices.js/10.2.0/choices.min.js"></script>
+        @routes
+        @vite(['resources/js/app.ts', "resources/js/Pages/{$page['component']}.vue"])
+        @inertiaHead
         <script>
             const theme = localStorage.getItem('theme') || 'dark';
             document.documentElement.setAttribute('data-theme', theme);
