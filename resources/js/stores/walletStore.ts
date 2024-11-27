@@ -1,19 +1,22 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-interface WalletStore {
-    worth: number;
-}
-
 export const useWalletStore = defineStore('wallet', () => {
-    const worth = ref<WalletStore['worth']>(0);
+  const worth = ref(0); // Wallet worth
+  const walletKey = ref(0); // Key for re-rendering the WalletWorth component
 
-    const setWorth = (value: WalletStore['worth']) => {
-        worth.value = value;
-    };
+  const setWorth = (value: number) => {
+    worth.value = value;
+  };
 
-    return {
-        worth,
-        setWorth,
-    };
+  const incrementWalletKey = () => {
+    walletKey.value++;
+  };
+
+  return {
+    worth,
+    walletKey,
+    setWorth,
+    incrementWalletKey,
+  };
 });

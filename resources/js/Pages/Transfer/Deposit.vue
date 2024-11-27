@@ -3,6 +3,10 @@ import { Head } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { ref } from "vue";
 import { router, usePage } from "@inertiajs/vue3";
+import { useWalletStore } from '@/stores/walletStore';
+
+// Initialize the Pinia store
+const walletStore = useWalletStore();
 
 // Define the form state
 const amount = ref(0);
@@ -13,12 +17,15 @@ const submitDeposit = () => {
     "/transfer",
     {
       amount: amount.value,
-      type: "deposit", // Add the type field here
+      type: "deposit",
     },
     {
       onSuccess: () => {
         // Clear the form
         amount.value = 0;
+
+        // Increment the global walletKey to trigger WalletWorth re-render
+        walletStore.incrementWalletKey();
       },
     }
   );
@@ -45,7 +52,6 @@ const submitDeposit = () => {
           <div v-if="usePage().props.error" class="alert alert-error">
             {{ usePage().props.error }}
           </div>
-
           <form @submit.prevent="submitDeposit" class="space-y-4">
             <div class="form-control">
               <label for="amount" class="label">

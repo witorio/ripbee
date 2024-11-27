@@ -3,9 +3,13 @@ import { Head } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { ref } from "vue";
 import { router, usePage } from "@inertiajs/vue3";
+import { useWalletStore } from '@/stores/walletStore';
 
 // Define the form state
 const amount = ref(0);
+
+// Initialize the Pinia store
+const walletStore = useWalletStore();
 
 // Handle form submission
 const submitWithdraw = () => {
@@ -19,6 +23,9 @@ const submitWithdraw = () => {
       onSuccess: () => {
         // Clear the form
         amount.value = 0;
+
+        // Increment the global walletKey to trigger WalletWorth re-render
+        walletStore.incrementWalletKey();
       },
     }
   );
