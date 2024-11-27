@@ -33,5 +33,9 @@ Route::get('/withdraw', [WalletController::class, 'withdraw'])->middleware(['aut
 
 Route::post('/transfer', [WalletController::class, 'update'])->middleware(['auth', 'verified'])->name('transfer.update'); 
 
+Route::middleware('auth')->group(function () {
+    Route::get('api/wallet-worth', [WalletController::class, 'fetchWalletWorth']);
+});
+
 
 require __DIR__.'/auth.php';

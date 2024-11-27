@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
@@ -9,8 +8,31 @@ import { Link } from '@inertiajs/vue3';
 import DarkModeToggle from '@/Components/DarkModeToggle.vue';
 import Footer from '@/Components/Footer.vue';
 import { Icon } from '@iconify/vue';
+import { ref, onMounted } from 'vue';
+import { useWalletStore } from '../stores/walletStore';
+import axios from 'axios';
 
 const showingNavigationDropdown = ref(false);
+
+// Initialize the wallet store
+const walletStore = useWalletStore();
+const walletWorth = ref(walletStore.worth); // Bind Pinia state to a local ref
+
+// Fetch wallet worth from the API
+const fetchWalletWorth = async () => {
+  try {
+    const response = await axios.get<{ worth: number }>('/api/wallet-worth');
+    walletStore.setWorth(response.data.worth); // Update Pinia store
+    walletWorth.value = walletStore.worth; // Sync local ref with store
+  } catch (error) {
+    console.error('Error fetching wallet worth:', error);
+  }
+};
+
+// Fetch wallet worth on component mount
+onMounted(() => {
+  fetchWalletWorth();
+});
 </script>
 
 <template>
@@ -409,6 +431,9 @@ const showingNavigationDropdown = ref(false);
                                             <div class="flex flex-col items-start">
                                                 <p class="text-sm/none">Name</p>
                                                 <p class="mt-1 text-xs/none text-primary">Edit</p>
+                                            </div>
+                                            <div class="flex flex-col items-start">
+                                                <p class="text-sm/none">Wallet Worth: {{ walletWorth }}</p>
                                             </div>
                                         </div>
                                     </label>

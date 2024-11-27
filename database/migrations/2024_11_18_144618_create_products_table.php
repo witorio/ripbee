@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->integer('category');
             $table->string('status');
             $table->string('title');
+            $table->string('thumbnail_url')->nullable();
             $table->json('data')->nullable();
             $table->integer('shares_left');
             $table->json('owners')->nullable();
