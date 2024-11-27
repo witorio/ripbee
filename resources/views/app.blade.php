@@ -14,7 +14,7 @@
 
         <!-- Scripts -->
         @routes
-        @vite(['resources/js/app.ts', "resources/js/Pages/{$page['component']}.vue", 'resources/js/scripts/main.ts'])
+        @vite(['resources/js/scripts/main.ts', 'resources/js/app.ts', "resources/js/Pages/{$page['component']}.vue"])
         @inertiaHead
         <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.53.0/apexcharts.min.js"></script>
         <script src="assets/js/pages/dashboards/ecommerce.js"></script>
