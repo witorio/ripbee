@@ -407,7 +407,7 @@ const showingNavigationDropdown = ref(false);
                                                 </div>
                                             </div>
                                             <div class="flex flex-col items-start">
-                                                <p class="text-sm/none">Deep</p>
+                                                <p class="text-sm/none">Name</p>
                                                 <p class="mt-1 text-xs/none text-primary">Edit</p>
                                             </div>
                                         </div>
